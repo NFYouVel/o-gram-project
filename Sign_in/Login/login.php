@@ -32,6 +32,7 @@
 
             <div class="register-link">
                 <p>Don't Have Account? <a href="#">Register</a></p>
+                halo
             </div>
         </form>
     </div>
