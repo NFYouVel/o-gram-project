@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../CSS/register.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Register</title>
+</head>
+
+<body>
+    <div class="wrapper">
+
+        <!-- Wrapper Bio -->
+        <div class="welcomeBack" id="wrap">
+            <div class="in">
+                <span class="bio">Be Your Own Voice</span><br>
+                <span class="welcome">Say what's on your mind, in seconds.
+                    No filters. No limits. Just real-time expression.</span><br>
+                <button class="btn" value="Submit">Sign Up</button>
+            </div>
+        </div>
+
+        <!-- Wrapper Create -->
+        <div class="create" id="wrap">
+
+            <!-- Login with another -->
+            <div class="createAccount">
+                <span>Create Account</span>
+                <div class="wrapIcon">
+                    <div class="icon">
+                        <img src="../../Picture/ggl.jpg" class="google">
+                    </div>
+                    <div class="icon">
+                        <img src="../../Picture/linkedin2.jpg" class="linkedln">
+                    </div>
+                </div>
+                <p style="margin-top: 10px;">Or Use Your Email For Registration</p>
+            </div>
+
+            <!-- Form -->
+            <div class="form">
+                <form action="" method="post">
+                    <div class="inputbox">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" required>
+                        <i class='bx bxs-user' id="user"></i>
+                    </div>
+                    <div class="inputbox">
+                        <label for="password">Email</label>
+                        <input type="email" name="email" required>
+                        <i class='bx  bx-envelope-open' id="email"></i>
+                    </div>
+                    <div class="inputbox">
+                        <label for="password">Password</label>
+                        <input type="text" name="password" required>
+                        <i class='bx bxs-lock' id="pw"></i>
+                    </div>
+
+                    <button class="btn" value="Submit">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

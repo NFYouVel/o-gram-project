@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="../../CSS/login.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Login</title>
 </head>
@@ -31,7 +31,7 @@
             <button class="btn" value="Submit">Login</button>
 
             <div class="register-link">
-                <p>Don't Have Account? <a href="#">Register</a></p>
+                <p>Don't Have Account? <a href="../Register/register.php">Register</a></p>
             </div>
         </form>
     </div>

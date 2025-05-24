@@ -12,8 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: url("../pict/wallpaperflare.com_wallpaper.jpg") no-repeat;
-    background-size: 100%;
+    background: url("../Sign_in/pict/wallpaperflare.com_wallpaper.jpg") center center / cover no-repeat;
 }
 
 .wrapper {
@@ -117,7 +116,6 @@ body {
     text-decoration: underline;
 }
 
-/* Dari sini */
 .inputbox label {
     position: absolute;
     left: 20px;
