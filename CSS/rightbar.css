@@ -1,0 +1,39 @@
+.searchcontainer{
+    height: fit-content;
+    width: max-content;
+    display: flex;
+    margin : 10px auto;
+}
+
+.search{
+
+    display: flex;
+    align-items: center;
+    padding: 14px;
+    border-radius: 28px;
+    background: #50b7f5;
+    position: relative;
+}
+
+.search-input{
+    width:200px;
+    font-size: 16px;
+    margin-left: 14px;
+    outline: none;
+    border: none;
+    background: transparent;
+}
+
+/*reccomended*/
+.reccomended{
+    width: 300px;
+    height: 250px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-radius: 28px;
+    background: #50b7f5;
+    margin: 0 auto;
+
+}

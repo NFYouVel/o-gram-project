@@ -9,12 +9,29 @@ body {
   --background: #011C4B;
 }
 
+.svghover {
+  display: inline-block;
+  color: #50b7f5;
+  transition: color 0.3s ease;
+  margin: 0 auto;
+}
+
+.svghover:hover {
+  color: black;
+  cursor: pointer;
+}
 
 .icon{
+  color:#50b7f5;
   padding-top: 20px;
   margin: 0 auto;
   width: 75px;
   height: 75px;
+}
+
+.icon:hover{
+  color:black;
+  cursor: pointer;
 }
 
 .sidebarOption {
@@ -75,9 +92,17 @@ body {
   min-width: 250px;
 }
 
+.rightbar {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 350px;
+  flex-shrink: 0;
+}
+
 
 .posts {
-  flex: 0.5;
+  flex: 1;
   border-right: 1px solid var(--seagram-color);
   min-width: fit-content;
   overflow-y: scroll;
