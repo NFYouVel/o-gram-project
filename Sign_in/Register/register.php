@@ -42,17 +42,17 @@
                 <form action="additional.php" method="get">
                     <div class="inputbox">
                         <label for="username">Username</label>
-                        <input type="text" name="username" required>
+                        <input type="text" name="username" required placeholder="Create your username...">
                         <i class='bx bxs-user' id="user"></i>
                     </div>
                     <div class="inputbox">
                         <label for="password">Email</label>
-                        <input type="email" name="email" required>
+                        <input type="email" name="email" required placeholder="Fill your email...">
                         <i class='bx  bx-envelope-open' id="email"></i>
                     </div>
                     <div class="inputbox">
                         <label for="password">Password</label>
-                        <input type="text" name="password" required>
+                        <input type="text" name="password" required placeholder="Create your username...">
                         <i class='bx bxs-lock' id="pw"></i>
                     </div>
 
