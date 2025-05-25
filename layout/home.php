@@ -18,59 +18,96 @@
         <a style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> home </span>
         <h2>Home</h2>
-        </a>
-      </div>
+      </a>
+    </div>
 
       <div class="sidebarOption">
         <a href="../layout/search.php" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> search </span>
         <h2>Explore</h2>
-        </a>
-      </div>
+      </a>
+    </div>
 
       <div class="sidebarOption">
         <a href="../layout/bookmark.php" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> bookmark </span>
         <h2>Bookmarks</h2>
-        </a>
-      </div>
+      </a>
+    </div>
 
-      <div class="sidebarOption">
-        <a href="#" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+    <div class="sidebarOption">
+      <a href="#" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> perm_identity </span>
         <h2>Profile</h2>
-        </a>
-      </div>
+      </a>
+    </div>
 
       <div class="sidebarOption">
         <a href="../layout/settings.php" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> settings </span>
         <h2>Settings</h2>
-        </a>
-      </div>
+      </a>
     </div>
+  </div>
 
-    <!-- posting -->
-    <div class="posts">
+  <!-- posting -->
+  <div class="posts">
 
-    </div>
+  </div>
 
-    <div class="rightbar">
+  <div class="rightbar">
     <!--search&follow-->
-      <form class= "searchcontainer" action="#">
-            <div class="search">
-                <span class="material-icons"> search </span>
-                <input class="search-input" type="search" placeholder="search">
-            </div>
-      </form>
-
-      <div class="reccomended">
-        <span class="text">this is for reccomended</span>
+    <form class="searchcontainer" action="#">
+      <div class="search">
+        <span class="material-icons"> search </span>
+        <input class="search-input" type="search" placeholder="search">
       </div>
-        <div class="footer">
-          <hr>
-            <span>seagram 2025</span>
+    </form>
+
+    <!-- recommended people -->
+    <div class="reccomended">
+
+      <div class="user-suggestion">
+        <img src="../layout/pict/Screenshot (10).png" alt="Profile 1" class="profile-img">
+        <div class="user-info">
+          <p class="display-name">David</p>
+          <p class="username">@DavidChristian</p>
         </div>
+        <input type="checkbox" id="follow1" class="follow-toggle hidden">
+        <label for="follow1" class="follow-btn">Follow</label>
+      </div>
+
+      <div class="user-suggestion">
+        <img src="../layout/pict/Screenshot (11).png" alt="Profile 2" class="profile-img">
+        <div class="user-info">
+          <p class="display-name">James</p>
+          <p class="username">@KohJiaQuan</p>
+        </div>
+        <input type="checkbox" id="follow2" class="follow-toggle hidden">
+        <label for="follow2" class="follow-btn">Follow</label>
+      </div>
+
+      <div class="user-suggestion">
+        <img src="../layout/pict/Screenshot (14).png" alt="Profile 3" class="profile-img">
+        <div class="user-info">
+          <p class="display-name">Marvel</p>
+          <p class="username">@MarvelMoshing</p>
+        </div>
+        <input type="checkbox" id="follow3" class="follow-toggle hidden">
+        <label for="follow3" class="follow-btn">Follow</label>
+      </div>
+
     </div>
-  </body>
+  <!-- end recommended people -->
+
+  <div>
+
+  </div>
+  <div class="footer">
+    <hr>
+    <span>seagram 2025</span>
+  </div>
+  </div>
+</body>
+
 </html>
