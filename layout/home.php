@@ -89,7 +89,7 @@
           <p class="username">@DavidChristian</p>
         </div>
         <input type="checkbox" id="follow1" class="follow-toggle hidden">
-        <label for="follow1" class="follow-btn">Follow</label>
+        <label for="follow1" class="follow-btn" data-text="Follow" data-text-checked="Unfollow"></label>
       </div>
 
       <div class="user-suggestion">
@@ -99,7 +99,7 @@
           <p class="username">@KohJiaQuan</p>
         </div>
         <input type="checkbox" id="follow2" class="follow-toggle hidden">
-        <label for="follow2" class="follow-btn">Follow</label>
+        <label for="follow2" class="follow-btn" data-text="Follow" data-text-checked="Unfollow"></label>
       </div>
 
       <div class="user-suggestion">
@@ -109,7 +109,7 @@
           <p class="username">@MarvelMoshing</p>
         </div>
         <input type="checkbox" id="follow3" class="follow-toggle hidden">
-        <label for="follow3" class="follow-btn">Follow</label>
+        <label for="follow3" class="follow-btn" data-text="Follow" data-text-checked="Unfollow"></label>
       </div>
 
     </div>

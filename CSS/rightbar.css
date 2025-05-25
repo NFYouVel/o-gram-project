@@ -28,7 +28,7 @@
 
 .reccomended {
   background-color: #4db8ff;
-  width: 300px;
+  width: 350px;
   padding: 20px;
   border-radius: 30px;
   display: flex;
@@ -70,25 +70,29 @@
   margin: 0;
 }
 
-.follow-btn {
-  background-color: black;
-  color: white;
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.follow-btn:hover {
-  background-color: #222;
-}
-
 .hidden {
   display: none;
 }
 
+.follow-btn {
+  background-color: black;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.follow-btn::after {
+  content: attr(data-text);
+}
+
 .follow-toggle:checked + .follow-btn {
-  background-color: #d3d3d3;
-  color: black;
+  background-color: #333;
+}
+
+.follow-toggle:checked + .follow-btn::after {
+  content: attr(data-text-checked);
 }
