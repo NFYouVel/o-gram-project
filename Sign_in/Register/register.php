@@ -8,8 +8,6 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Register</title>
 </head>
-
-<body>
     <div class="wrapper">
 
         <!-- Wrapper Bio -->
@@ -41,7 +39,7 @@
 
             <!-- Form -->
             <div class="form">
-                <form action="" method="post">
+                <form action="additional.php" method="get">
                     <div class="inputbox">
                         <label for="username">Username</label>
                         <input type="text" name="username" required>
@@ -58,11 +56,13 @@
                         <i class='bx bxs-lock' id="pw"></i>
                     </div>
 
-                    <button class="btn" value="Submit">Sign Up</button>
-                </form>
+                    <button class="btn" name="button" value="Submit">Sign Up</button>
+                </form>                
             </div>
         </div>
     </div>
+
+    </
 </body>
 
 </html>

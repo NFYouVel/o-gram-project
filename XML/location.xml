@@ -1,0 +1,195 @@
+<locations>
+  <!-- Original Locations -->
+  <location>New York, USA</location>
+  <location>Los Angeles, USA</location>
+  <location>Chicago, USA</location>
+  <location>London, UK</location>
+  <location>Paris, France</location>
+  <location>Berlin, Germany</location>
+  <location>Madrid, Spain</location>
+  <location>Rome, Italy</location>
+  <location>Tokyo, Japan</location>
+  <location>Osaka, Japan</location>
+  <location>Beijing, China</location>
+  <location>Shanghai, China</location>
+  <location>Seoul, South Korea</location>
+  <location>Bangkok, Thailand</location>
+  <location>Singapore, Singapore</location>
+  <location>Jakarta, Indonesia</location>
+  <location>Kuala Lumpur, Malaysia</location>
+  <location>Sydney, Australia</location>
+  <location>Melbourne, Australia</location>
+  <location>Toronto, Canada</location>
+  <location>Vancouver, Canada</location>
+  <location>Mexico City, Mexico</location>
+  <location>Buenos Aires, Argentina</location>
+  <location>São Paulo, Brazil</location>
+  <location>Rio de Janeiro, Brazil</location>
+  <location>Cairo, Egypt</location>
+  <location>Istanbul, Turkey</location>
+  <location>Moscow, Russia</location>
+  <location>Dubai, UAE</location>
+  <location>Johannesburg, South Africa</location>
+  <location>Nairobi, Kenya</location>
+  <location>Lagos, Nigeria</location>
+  <location>New Delhi, India</location>
+  <location>Mumbai, India</location>
+  <location>Bangalore, India</location>
+  <location>Karachi, Pakistan</location>
+  <location>Dhaka, Bangladesh</location>
+  <location>Tehran, Iran</location>
+  <location>Baghdad, Iraq</location>
+  <location>Riyadh, Saudi Arabia</location>
+
+  <!-- Additional 100 Locations -->
+  <location>Houston, USA</location>
+  <location>Philadelphia, USA</location>
+  <location>Phoenix, USA</location>
+  <location>San Antonio, USA</location>
+  <location>San Diego, USA</location>
+  <location>Dallas, USA</location>
+  <location>San Jose, USA</location>
+  <location>Austin, USA</location>
+  <location>Jacksonville, USA</location>
+  <location>Fresno, USA</location>
+  <location>Amsterdam, Netherlands</location>
+  <location>Rotterdam, Netherlands</location>
+  <location>Hague, Netherlands</location>
+  <location>Zurich, Switzerland</location>
+  <location>Geneva, Switzerland</location>
+  <location>Vienna, Austria</location>
+  <location>Prague, Czech Republic</location>
+  <location>Warsaw, Poland</location>
+  <location>Warsaw, Poland</location>
+  <location>Budapest, Hungary</location>
+  <location>Bucharest, Romania</location>
+  <location>Kiev, Ukraine</location>
+  <location>Minsk, Belarus</location>
+  <location>Stockholm, Sweden</location>
+  <location>Oslo, Norway</location>
+  <location>Copenhagen, Denmark</location>
+  <location>Helsinki, Finland</location>
+  <location>Reykjavik, Iceland</location>
+  <location>Dublin, Ireland</location>
+  <location>Glasgow, UK</location>
+  <location>Manchester, UK</location>
+  <location>Liverpool, UK</location>
+  <location>Birmingham, UK</location>
+  <location>Edinburgh, UK</location>
+  <location>Cardiff, UK</location>
+  <location>Belfast, UK</location>
+  <location>Mumbai, India</location>
+  <location>Chennai, India</location>
+  <location>Kolkata, India</location>
+  <location>Hyderabad, India</location>
+  <location>Pune, India</location>
+  <location>Delhi, India</location>
+  <location>Kathmandu, Nepal</location>
+  <location>Colombo, Sri Lanka</location>
+  <location>Dhaka, Bangladesh</location>
+  <location>Karachi, Pakistan</location>
+  <location>Lahore, Pakistan</location>
+  <location>Istanbul, Turkey</location>
+  <location>Ankara, Turkey</location>
+  <location>Beirut, Lebanon</location>
+  <location>Tunis, Tunisia</location>
+  <location>Casablanca, Morocco</location>
+  <location>Cape Town, South Africa</location>
+  <location>Durban, South Africa</location>
+  <location>Addis Ababa, Ethiopia</location>
+  <location>Khartoum, Sudan</location>
+  <location>Mogadishu, Somalia</location>
+  <location>Kampala, Uganda</location>
+  <location>Lusaka, Zambia</location>
+  <location>Harare, Zimbabwe</location>
+  <location>Lagos, Nigeria</location>
+  <location>Abuja, Nigeria</location>
+  <location>Cairo, Egypt</location>
+  <location>Alexandria, Egypt</location>
+  <location>Mumbai, India</location>
+  <location>Manila, Philippines</location>
+  <location>Cebu, Philippines</location>
+  <location>Ho Chi Minh City, Vietnam</location>
+  <location>Hanoi, Vietnam</location>
+  <location>Phnom Penh, Cambodia</location>
+  <location>Vientiane, Laos</location>
+  <location>Kuala Lumpur, Malaysia</location>
+  <location>Kuching, Malaysia</location>
+  <location>Yangon, Myanmar</location>
+  <location>Dili, Timor-Leste</location>
+  <location>Port Moresby, Papua New Guinea</location>
+  <location>Wellington, New Zealand</location>
+  <location>Auckland, New Zealand</location>
+  <location>Honolulu, USA</location>
+  <location>Anchorage, USA</location>
+  <location>Montreal, Canada</location>
+  <location>Calgary, Canada</location>
+  <location>Edmonton, Canada</location>
+  <location>Ottawa, Canada</location>
+  <location>Halifax, Canada</location>
+  <location>St. John's, Canada</location>
+  <location>Hamilton, Canada</location>
+  <location>Quebec City, Canada</location>
+  <location>Winnipeg, Canada</location>
+  <location>Vancouver, Canada</location>
+  <location>Guatemala City, Guatemala</location>
+  <location>San Salvador, El Salvador</location>
+  <location>Tegucigalpa, Honduras</location>
+  <location>Managua, Nicaragua</location>
+  <location>San José, Costa Rica</location>
+  <location>Panama City, Panama</location>
+  <location>Kingston, Jamaica</location>
+  <location>Port-au-Prince, Haiti</location>
+  <location>Santiago, Chile</location>
+  <location>Lima, Peru</location>
+  <location>Quito, Ecuador</location>
+  <location>Bogotá, Colombia</location>
+  <location>Caracas, Venezuela</location>
+  <location>La Paz, Bolivia</location>
+  <location>Asunción, Paraguay</location>
+  <location>Montevideo, Uruguay</location>
+  <location>Paramaribo, Suriname</location>
+  <location>Georgetown, Guyana</location>
+  <location>Brasília, Brazil</location>
+  <location>Salvador, Brazil</location>
+  <location>Fortaleza, Brazil</location>
+  <location>Belo Horizonte, Brazil</location>
+  <location>Curitiba, Brazil</location>
+  <location>Recife, Brazil</location>
+  <location>Porto Alegre, Brazil</location>
+  <location>Natal, Brazil</location>
+  <location>Manaus, Brazil</location>
+  <location>Belém, Brazil</location>
+  <location>Goiania, Brazil</location>
+  <location>Campinas, Brazil</location>
+  <location>São Luís, Brazil</location>
+  <location>Maceió, Brazil</location>
+  <location>João Pessoa, Brazil</location>
+  <location>Teresina, Brazil</location>
+  <location>Aracaju, Brazil</location>
+  <location>Macapá, Brazil</location>
+  <location>Palmas, Brazil</location>
+  <location>Boa Vista, Brazil</location>
+  <location>Porto Velho, Brazil</location>
+  <location>Rio Branco, Brazil</location>
+  <location>Cuiabá, Brazil</location>
+  <location>Campo Grande, Brazil</location>
+  <location>Florianópolis, Brazil</location>
+  <location>Vitória, Brazil</location>
+  <location>Uberlândia, Brazil</location>
+  <location>Ribeirão Preto, Brazil</location>
+  <location>Sorocaba, Brazil</location>
+  <location>Niterói, Brazil</location>
+  <location>Joinville, Brazil</location>
+  <location>Jundiaí, Brazil</location>
+  <location>Ponta Grossa, Brazil</location>
+  <location>Blumenau, Brazil</location>
+  <location>Ilhéus, Brazil</location>
+  <location>Feira de Santana, Brazil</location>
+  <location>Petrolina, Brazil</location>
+  <location>Juazeiro, Brazil</location>
+  <location>Paulista, Brazil</location>
+  <location>Ipojuca, Brazil</location>
+  <location>Olinda, Brazil</location>
+  <location>Recife, Brazil</location>
+</locations>
