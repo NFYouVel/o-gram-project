@@ -25,15 +25,70 @@
 }
 
 /*reccomended*/
-.reccomended{
-    width: 300px;
-    height: 250px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    border-radius: 28px;
-    background: #50b7f5;
-    margin: 0 auto;
 
+.reccomended {
+  background-color: #4db8ff;
+  width: 300px;
+  padding: 20px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-family: 'Georgia', serif;
+  margin-left: 10%;
+}
+
+.user-suggestion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.profile-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.display-name {
+  font-weight: bold;
+  margin: 0;
+  color: black;
+}
+
+.username {
+  color: #444;
+  font-size: 0.85em;
+  margin: 0;
+}
+
+.follow-btn {
+  background-color: black;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.follow-btn:hover {
+  background-color: #222;
+}
+
+.hidden {
+  display: none;
+}
+
+.follow-toggle:checked + .follow-btn {
+  background-color: #d3d3d3;
+  color: black;
 }
