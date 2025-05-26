@@ -24,12 +24,13 @@
         $caption = $_POST['caption'];
         $posting = $_FILES['postPhoto']['name'];
         $temporary = $_FILES['postPhoto']['tmp_name'];
+        $id = $_GET['id'];
 
         move_uploaded_file($temporary, "pict/" . $posting);
 
         $filepath = "pict/" . $posting;
-        $insert = "INSERT INTO post (caption, gambar) VALUES 
-                    ('$caption', '$filepath')";
+        $insert = "INSERT INTO post (user_id, caption, gambar) VALUES 
+                    ('$id', '$caption', '$filepath')";
 
         if (mysqli_query($connection, $insert)) {
             echo "Posting Successful";
@@ -37,7 +38,6 @@
         else{
             echo "Posting Unsuccessful";
         }
-        
         
     }
 

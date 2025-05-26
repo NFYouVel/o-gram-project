@@ -11,7 +11,7 @@
 
 <body>
     <div class="wrapper">
-        <form action="" method="post">
+        <form action="../../layout/home.php" method="get">
             <h1>Login</h1>
             <div class="inputbox">
                 <input type="text" name="username" required>
@@ -28,7 +28,7 @@
                 <a href="#">Forgot Password?</a>
             </div>
 
-            <button class="btn" value="Submit">Login</button>
+            <button class="btn" name="input" value="Submit">Login</button>
 
             <div class="register-link">
                 <p>Don't Have Account? <a href="../Register/register.php">Register</a></p>

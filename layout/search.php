@@ -71,7 +71,10 @@
   <!-- posting -->
   <div class="posts">
     <form class="searchcontainer" action="#">
-      <a href="#" class="createpost search" >Create Post</a>
+      <?php 
+      $temp = $_GET['id'];
+      ?>
+      <a href="../Posting/PostingForm.php?id=<?php echo $temp ?>" class="createpost search" >Create Post</a>
       <div class="search">
         <span class="material-icons"> search </span>
         <input class="search-input long" type="search" placeholder="search">
