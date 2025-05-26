@@ -50,22 +50,19 @@ $password = $_GET['password'];
                 <form method="post">
                     <div class="inputbox">
                         <label for="Birth">Birth Date</label>
-                        <input type="date" name="username" placeholder="Your Birth Date..." required>
+                        <input type="date" name="birth" placeholder="Your Birth Date..." required>
                     </div>
                     <div class="inputbox">
                         <label for="Phone Number">Phone Number</label>
-                        <input type="text" name="phone" placeholder="Your Phone Number..." required>
+                        <input type="text" name="phone" placeholder="Your Phone Number...">
                     </div>
-
 
                     <div class="inputbox">
                         <label for="Location">Location</label>
                         <input type="text" id="locationInput" name="location" placeholder="Your Location..." onkeyup="searchLocation()">
-                        <div id="suggestions"></div> <hr style="background-color: black; height: 2px;">
+                        <div id="suggestions"></div>
+                        <hr style="background-color: black; height: 2px;">
                     </div>
-
-
-
 
                     <div class="inputbox" id="gender">
                         <label for="Gender">Gender</label>
@@ -86,9 +83,8 @@ $password = $_GET['password'];
                     </div>
                     <div class="inputbox">
                         <label for="Bio">Bio</label>
-                        <textarea name="textarea" id="bio" rows="3" cols="75"></textarea>
+                        <textarea name="bio" id="bio" rows="3" cols="75"></textarea>
                     </div>
-
 
                     <button class="btn" name="button" value="Submit">Sign Up</button>
                 </form>
@@ -97,9 +93,35 @@ $password = $_GET['password'];
 </body>
 
 <?php
-    include('../../Connection/Connection.php');
+include('../../Connection/Connection.php');
+
+// Data
+$username = $_GET['username'];
+$email = $_GET['email$email'];
+$password = $_GET['password'];
+$birth = $_POST['birth'];
+$phone = $_POST['phone'];
+$location = $_POST['location'];
+$bio = $_POST['bio'];
+
+echo $birth;
+echo $phone;
+echo $location;
+echo $bio;
 
 
+// $query = "INSERT INTO user (username, email, password, date_of_birth, location, phone, gender, bio, role) VALUES (
+//     'marvel99',
+//     'marvel@example.com',
+//     'hashed_password_123', 
+//     '2002-06-01',
+//     'Bandung',
+//     '08123456789',
+//     'Male',
+//     'Just a chill guy who codes a lot.',
+//     'member'
+// );
+// "
 ?>
 
 
