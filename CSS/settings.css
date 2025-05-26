@@ -1,0 +1,38 @@
+.settings{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.updatedata{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 1000px;
+    margin-top: 100px;
+    height: fit-content;
+    background-color: #50b7f5;
+    border-radius: 24px;
+    font-size: 50px;
+}
+.newinput{
+    outline: none;
+    border: none;
+    background: transparent;
+    padding: 12px 24px;
+    font-size: 50px;
+    float: right;
+    
+}
+.visible{
+    width: 50px;
+    border: none;
+    background-color: transparent;
+}
+.newinput::placeholder{
+    text-align: center;
+}
+ .backgroundoption{
+    display: flex;
+    flex-direction: row;
+}

@@ -6,11 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SeaGram</title>
     <link rel="stylesheet" href="../CSS/sidebar.css" />
-    <link rel="stylesheet" href="../CSS/rightbar.css" />
-    <link rel="stylesheet" href="../CSS/search.css" />
+    <link rel="stylesheet" href="../CSS/settings.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   </head>
   <body>
+    <script>
+      function visibleOn(eye){
+        let input = document.querySelector(".newinput");
+        input.type = "text";
+        eye.textContent = "visibility";
+      }
+      function visibleOff(eye) {
+        let input = document.querySelector(".newinput");
+        input.type = "password";
+        eye.textContent = "visibility_off";
+      }
+    </script>
     <div class="sidebar">
       <a href="../layout/home.php" class="svghover">
        <svg class="icon" fill="currentColor" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 264.564 264.564" xml:space="preserve" stroke="#50b7f5"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M132.281,264.564c51.24,0,92.931-41.681,92.931-92.918c0-50.18-87.094-164.069-90.803-168.891L132.281,0l-2.128,2.773 c-3.704,4.813-90.802,118.71-90.802,168.882C39.352,222.883,81.042,264.564,132.281,264.564z"></path> </g> </g> </g></svg>
@@ -51,24 +62,17 @@
       </div>
     </div>
 
-    <!-- posting -->
-    <!-- <div class="posts">
-        <form class= "searchcontainer" action="#">
-            <div class="search">
-                <span class="material-icons"> search </span>
-                <input class="search-input" type="search" placeholder="search">
-            </div>
-      </form>
-    </div> -->
-
-    <!-- <div class="rightbar">
-      <div class="reccomended">
-        <span class="text">this is for reccomended</span>
+    <div class="settings">
+      <div class="updatedata">
+        <span>New Password: </span><input class="newinput" type="password" name="newUsername" id="" placeholder="your username">
+        <button class="material-icons visible" onmousedown="visibleOn(this)"  onmouseup="visibleOff(this)" onmousedown="showIcon(this)" onmouseup="hideIcon(this)">visibility_off</button>
       </div>
-        <div class="footer">
-          <hr>
-            <span>seagram 2025</span>
-        </div>
-    </div> -->
+      <div class="updatedata">
+        <input class="backgroundoption" type="radio" name="backgroundcolor" onclick="changebackground()"><span>Ocean Theme</span>
+      </div>
+      <div class="updatedata">
+        <input class="backgroundoption" type="radio" name="backgroundcolor" onclick="changebackground()"><span>Ocean Theme</span>
+      </div>
+    </div>
   </body>
 </html>
