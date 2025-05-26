@@ -22,15 +22,15 @@
       </a>
     </div>
 
-      <div class="sidebarOption">
-        <a href="../layout/search.php" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+    <div class="sidebarOption">
+      <a href="../layout/search.php" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> search </span>
         <h2>Explore</h2>
       </a>
     </div>
 
-      <div class="sidebarOption">
-        <a href="../layout/bookmark.php" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+    <div class="sidebarOption">
+      <a href="../layout/bookmark.php" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> bookmark </span>
         <h2>Bookmarks</h2>
       </a>
@@ -43,8 +43,8 @@
       </a>
     </div>
 
-      <div class="sidebarOption">
-        <a href="../layout/settings.php" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+    <div class="sidebarOption">
+      <a href="../layout/settings.php" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> settings </span>
         <h2>Settings</h2>
       </a>
@@ -99,16 +99,46 @@
       </div>
 
     </div>
-  <!-- end recommended people -->
+    <!-- end recommended people -->
 
-  <div>
+    <div>
 
-  </div>
-  <div class="footer">
-    <hr>
-    <span>seagram 2025</span>
-  </div>
+    </div>
+    <div class="footer">
+      <hr>
+      <span>seagram 2025</span>
+    </div>
   </div>
 </body>
+
+<?php
+if (isset($_GET['buttonRegis'])) {
+    include('../Connection/Connection.php');
+
+    $username = $_GET['username'];
+    $email = $_GET['email'];
+    $password = $_GET['password'];
+    $hashpassword = md5($_GET['password']);
+    $birth = $_GET['birth'];
+    $phone = $_GET['phone'];
+    $location = $_GET['location'];
+    $bio = $_GET['bio'];
+    $gender = $_GET['gender'];
+
+    $query = "INSERT INTO user (username, email, password, hashpassword, date_of_birth, location, phone, gender, bio, role) VALUES (
+    '$username',
+    '$email',
+    '$password', 
+    '$hashpassword',
+    '$birth',
+    '$location',
+    '$phone',
+    '$gender',
+    '$bio',
+    'member'
+);";
+    $result = mysqli_query($connection,$query);
+}
+?>
 
 </html>

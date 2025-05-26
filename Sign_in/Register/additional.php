@@ -20,7 +20,7 @@ $password = $_GET['password'];
         <div class="create">
             <div class="form">
                 <span class="form">Main Register</span>
-                <form method="post">
+                <form method="get">
                     <div class="inputbox">
                         <label for="username">Username</label>
                         <input type="text" name="username" <?php echo "value='$name'" ?>>
@@ -33,7 +33,7 @@ $password = $_GET['password'];
                     </div>
                     <div class="inputbox">
                         <label for="password">Password</label>
-                        <input type="text" name="password" <?php echo "value='$password'" ?>>
+                        <input type="text" name="password" <?php echo "value='$password'" ?> md5()>
                         <i class='bx bxs-lock' id="pw"></i>
                     </div>
 
@@ -47,7 +47,10 @@ $password = $_GET['password'];
 
             <div class="form">
                 <span class="form">Additional Data</span>
-                <form method="post">
+                <form method="get" action="../../layout/home.php">
+                    <input type="hidden" name="username" <?php echo "value='$name'" ?>>
+                    <input type="hidden" name="email" <?php echo "value='$email'" ?>>
+                    <input type="hidden" name="password" <?php echo "value='$password'" ?>>
                     <div class="inputbox">
                         <label for="Birth">Birth Date</label>
                         <input type="date" name="birth" placeholder="Your Birth Date..." required>
@@ -86,43 +89,13 @@ $password = $_GET['password'];
                         <textarea name="bio" id="bio" rows="3" cols="75"></textarea>
                     </div>
 
-                    <button class="btn" name="button" value="Submit">Sign Up</button>
+                    <button class="btn" name="buttonRegis" value="Submit">Sign Up</button>
                 </form>
             </div>
         </div>
 </body>
 
-<?php
-include('../../Connection/Connection.php');
 
-// Data
-$username = $_GET['username'];
-$email = $_GET['email$email'];
-$password = $_GET['password'];
-$birth = $_POST['birth'];
-$phone = $_POST['phone'];
-$location = $_POST['location'];
-$bio = $_POST['bio'];
-
-echo $birth;
-echo $phone;
-echo $location;
-echo $bio;
-
-
-// $query = "INSERT INTO user (username, email, password, date_of_birth, location, phone, gender, bio, role) VALUES (
-//     'marvel99',
-//     'marvel@example.com',
-//     'hashed_password_123', 
-//     '2002-06-01',
-//     'Bandung',
-//     '08123456789',
-//     'Male',
-//     'Just a chill guy who codes a lot.',
-//     'member'
-// );
-// "
-?>
 
 
 <script>
