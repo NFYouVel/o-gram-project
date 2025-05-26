@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="../CSS/rightbar.css" />
     <link rel="stylesheet" href="../CSS/reccomended.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!--googlejquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../JS/ajaxlivesearch.js"></script>
   </head>
   <body>
     <div class="sidebar">
@@ -58,13 +61,16 @@
 
   <div class="rightbar">
     <!--search&follow-->
+
     <form class="searchcontainer" action="#">
       <div class="search">
         <span class="material-icons"> search </span>
-        <input class="search-input" type="search" placeholder="search">
+        <input class="search-input" id="searchin" type="search" name="search" placeholder="search">
       </div>
     </form>
+    <div id="searchHint">
 
+    </div>
     <!-- recommended people -->
     <div class="reccomended">
 

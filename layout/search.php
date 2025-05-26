@@ -10,6 +10,9 @@
   <link rel="stylesheet" href="../CSS/rightbar.css" />
   <link rel="stylesheet" href="../CSS/search.css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <!--googlejquery-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+ 
 </head>
 
 <body>
@@ -69,14 +72,19 @@
   </div>
 
   <!-- posting -->
+
   <div class="posts">
+
     <form class="searchcontainer" action="#">
       <a href="#" class="createpost search" >Create Post</a>
       <div class="search">
         <span class="material-icons"> search </span>
-        <input class="search-input long" type="search" placeholder="search">
+        <input class="search-input long" id="searchin" type="search" placeholder="search">
       </div>
     </form>
+    <div id="searchHint">
+
+    </div>
     <div class="recommend-people">
       <h2 id="where-follow">Who to follow</h2>
       <div class="user-suggestion">
