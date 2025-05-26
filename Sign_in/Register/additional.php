@@ -71,15 +71,15 @@ $password = $_GET['password'];
                         <label for="Gender">Gender</label>
                         <div class="wrapGender">
                             <label class='radio-option' id="man">
-                                <input type="radio" name="gender" value="Man" required>
-                                <span class='radio-text'><span>Man</span></span>
+                                <input type="radio" name="gender" value="Male" required>
+                                <span class='radio-text'><span>Male</span></span>
                             </label>
                             <label class='radio-option' id="woman">
-                                <input type="radio" name="gender" value="Woman" required>
-                                <span class='radio-text'><span>Woman</span></span>
+                                <input type="radio" name="gender" value="Female" required>
+                                <span class='radio-text'><span>Female</span></span>
                             </label>
                             <label class='radio-option' id="nts">
-                                <input type="radio" name="gender" value="NotToSay" required>
+                                <input type="radio" name="gender" value="Not To Say" required>
                                 <span class='radio-text'><span>Not To Say</span></span>
                             </label>
                         </div>
@@ -95,6 +95,14 @@ $password = $_GET['password'];
             </div>
         </div>
 </body>
+
+<?php
+    include('../../Connection/Connection.php');
+
+
+?>
+
+
 <script>
     let xmlData;
 
