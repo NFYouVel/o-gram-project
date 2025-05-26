@@ -65,7 +65,7 @@
     <div class="settings">
       <div class="updatedata">
         <span>New Password: </span><input class="newinput" type="password" name="newUsername" id="" placeholder="your username">
-        <button class="material-icons visible" onmousedown="visibleOn(this)"  onmouseup="visibleOff(this)" onmousedown="showIcon(this)" onmouseup="hideIcon(this)">visibility_off</button>
+        <button class="material-icons visible" onmousedown="visibleOn(this)"  onmouseup="visibleOff(this)" >visibility_off</button>
       </div>
       <div class="updatedata">
         <input class="backgroundoption" type="radio" name="backgroundcolor" onclick="changebackground()"><span>Ocean Theme</span>

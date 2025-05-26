@@ -107,6 +107,8 @@ body {
   border-right: 1px solid var(--seagram-color);
   min-width: fit-content;
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
 }
 
 .posts::-webkit-scrollbar {

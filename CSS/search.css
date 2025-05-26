@@ -1,3 +1,16 @@
+
+.createpost{
+  width: 150px;
+  justify-content: center;
+  text-decoration: none;
+  color: black;
+  margin-right: 50px;
+}
+
+.long{
+  width: 300px;
+}
+
 .user-suggestion {
   display: flex;
   align-items: center;
@@ -65,7 +78,7 @@
 }
 
 .recommend-people > #where-follow {
-  margin-top: 60%;
+  /* margin-top: 60%; */
   color: white;
   margin-bottom: 20px;
   font-size: 2rem;
