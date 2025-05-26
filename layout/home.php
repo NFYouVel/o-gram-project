@@ -7,6 +7,7 @@
     <title>SeaGram</title>
     <link rel="stylesheet" href="../CSS/sidebar.css" />
     <link rel="stylesheet" href="../CSS/rightbar.css" />
+    <link rel="stylesheet" href="../CSS/reccomended.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   </head>
   <body>
