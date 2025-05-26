@@ -59,6 +59,7 @@ body {
 
 .sidebarOption.active {
   color: var(--seagram-color);
+  
 }
 
 .sidebar__tweet {

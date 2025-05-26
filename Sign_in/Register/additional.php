@@ -52,6 +52,10 @@ $password = $_GET['password'];
                     <input type="hidden" name="email" <?php echo "value='$email'" ?>>
                     <input type="hidden" name="password" <?php echo "value='$password'" ?>>
                     <div class="inputbox">
+                        <label for="Birth">Nickname</label>
+                        <input type="text" name="nickname" placeholder="Your Nickname..." required>
+                    </div>
+                    <div class="inputbox">
                         <label for="Birth">Birth Date</label>
                         <input type="date" name="birth" placeholder="Your Birth Date..." required>
                     </div>
