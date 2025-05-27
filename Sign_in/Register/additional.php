@@ -2,8 +2,26 @@
 $name = $_GET['username'];
 $email = $_GET['email'];
 $password = $_GET['password'];
-?>
 
+$checkHarm = "../../TextFile/harmWord.txt";
+$file = fopen($checkHarm, "r");
+
+if (!$file) {
+    die("Gagal membuka file.");
+}
+
+$booleanHarm = false;
+$what = '';
+while (($line = fgets($file)) != false) {
+    if (strcasecmp($name, trim($line)) == 0) {
+        $booleanHarm = true;
+        $what = $line;
+        break;
+    }
+}
+
+fclose($file);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,6 +30,36 @@ $password = $_GET['password'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link rel="stylesheet" href="../../CSS/additional.css">
+    <style>
+        .harm-alert {
+            position: absolute;
+            top: 29vh;
+            left: 25vh;
+            background-color: #ffe0e0;
+            color: #a30000;
+            padding: 5px 10px;
+            border: 1px solid #ffaaaa;
+            border-left: 6px solid #ff4d4d;
+            font-weight: 600;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            border-radius: 8px;
+            font-size: 12px;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -24,17 +72,22 @@ $password = $_GET['password'];
                     <div class="inputbox">
                         <label for="username">Username</label>
                         <input type="text" name="username" <?php echo "value='$name'" ?>>
-                        <i class='bx bxs-user' id="user"></i>
+                        <?php
+                        if ($booleanHarm) {
+                            echo "<div class='harm-alert'>
+                                    Your username contains a harmful word: <strong>" . htmlspecialchars($what) . "</strong>. Please choose another one!
+                                    <span class='close-btn' onclick='this.parentElement.style.display=\"none\";'>&times;</span>
+                                </div>";
+                        }
+                        ?>
                     </div>
                     <div class="inputbox">
                         <label for="password">Email</label>
                         <input type="email" name="email" <?php echo "value='$email'" ?>>
-                        <i class='bx  bx-envelope-open' id="email"></i>
                     </div>
                     <div class="inputbox">
                         <label for="password">Password</label>
                         <input type="text" name="password" <?php echo "value='$password'" ?> md5()>
-                        <i class='bx bxs-lock' id="pw"></i>
                     </div>
 
                     <button class="btn" name="button" value="Update">Update</button>
@@ -100,47 +153,6 @@ $password = $_GET['password'];
 </body>
 
 
-
-
-<script>
-    let xmlData;
-
-    window.onload = function() {
-        const xhr = new XMLHttpRequest();
-        xhr.open("GET", "../../XML/location.xml", true);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                xmlData = xhr.responseXML;
-            }
-        };
-        xhr.send();
-    };
-
-    function searchLocation() {
-        let input = document.getElementById("locationInput").value.toLowerCase();
-        let suggestions = document.getElementById("suggestions");
-        suggestions.innerHTML = "";
-
-        if (input.length === 0 || !xmlData) return;
-
-        let locations = xmlData.getElementsByTagName("location");
-
-        for (let i = 0; i < locations.length; i++) {
-            let loc = locations[i].textContent;
-            if (loc.toLowerCase().includes(input)) {
-                let div = document.createElement("div");
-                div.innerHTML = loc;
-                div.style.padding = "5px";
-                div.style.cursor = "pointer";
-                div.onclick = function() {
-                    document.getElementById("locationInput").value = loc;
-                    suggestions.innerHTML = "";
-                };
-                suggestions.appendChild(div);
-            }
-        }
-    }
-</script>
 
 
 </html>

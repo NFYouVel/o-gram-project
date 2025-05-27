@@ -1,7 +1,7 @@
 <div class='posting_card'>
     <div class="user-header">
         <div class="user-left">
-            <img src="../Posting/pict/Screenshot (14).png" alt="Foto Profil">
+            <img src="../Posting/pict/IMG_20220812_215531.jpg" alt="Foto Profil">
             <div class="user-info">
                 <p class="display-name">David</p>
                 <p class="username">@DavidGanteng</p>
@@ -13,7 +13,7 @@
             <span class="follow-btn">Follow</span>
         </label>
     </div>
-    <img src="../Posting/pict/Screenshot (39).png" class="post-image">
+    <img src="../Posting/pict/IMG_20220812_215531.jpg" class="post-image">
 
     <div class="button_action">
         <label class="icon-toggle">

@@ -10,11 +10,12 @@
 </head>
 
 <body>
+
     <div class="wrapper">
-        <form action="../../layout/home.php" method="get">
+        <form action="../../layout/home.php" method="get" id="loginForm">
             <h1>Login</h1>
             <div class="inputbox">
-                <input type="text" name="username" required>
+                <input type="text" name="username" required id="username" onkeyup="harmWord()">
                 <label for="username">Username</label>
                 <i class='bx bxs-user'></i>
             </div>

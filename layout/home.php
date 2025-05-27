@@ -1,10 +1,28 @@
 <?php
+include('../Connection/Connection.php');
+
+if (isset($_POST['upload'])) {
+  $caption = $_POST['caption'];
+  $posting = $_FILES['postPhoto']['name'];
+  $temporary = $_FILES['postPhoto']['tmp_name'];
+  $id = $_POST['id'];
+
+  move_uploaded_file($temporary, "../Posting/pict/" . $posting);
+
+  $filepath = "pict/" . $posting;
+  $insert = "INSERT INTO post (user_id, caption, gambar) VALUES 
+                    ('$id', '$caption', '$filepath')";
+
+  if (mysqli_query($connection, $insert)) {
+    
+  } 
+}
+
 if (isset($_GET['id'])) {
   $id = $_GET['id'];
 }
 
 if (isset($_GET['buttonRegis'])) {
-  include('../Connection/Connection.php');
 
   $username = $_GET['username'];
   $nickname = $_GET['nickname'];
@@ -103,7 +121,9 @@ if (isset($_GET['input'])) {
 
     <div class="sidebarOption">
       <?php
-      $temp = "?id=" . $id;
+      if (isset($id)) {
+        $temp = "?id=" . $id;
+      }
       ?>
       <a href="../layout/search.php<?php echo $temp ?>"
         style="display: flex; align-items: center; text-decoration: none; color: inherit;">
@@ -121,7 +141,7 @@ if (isset($_GET['input'])) {
     </div>
 
     <div class="sidebarOption">
-      <a href="../layout/profile.php<?php echo $temp ?>" 
+      <a href="../layout/profile.php<?php echo $temp ?>"
         style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> perm_identity </span>
         <h2>Profile</h2>
@@ -139,9 +159,30 @@ if (isset($_GET['input'])) {
 
   <!-- posting -->
   <div class="posts">
+
+    <!-- Welcome to -->
     <div class="welcomeUser">
-      <span>WELCOME .. </span>
+      <span class="welcome-text">WELCOME
+        <?php
+        if (isset($username)) {
+          $query = "SELECT * FROM user WHERE username = '$username' LIMIT 1";
+          $result = mysqli_query($connection, $query);
+          if ($row = mysqli_fetch_array($result)) {
+            echo $row['nickname'];
+          }
+        }
+        if (isset($id)) {
+          $query = "SELECT * FROM user WHERE id = '$id' LIMIT 1";
+          $result = mysqli_query($connection, $query);
+          if ($row = mysqli_fetch_array($result)) {
+            echo $row['nickname'];
+          }
+        }
+        ?>
+      </span>
     </div>
+
+    <!-- Udah masuk ke posting -->
     <?php
     include('../Connection/Connection.php');
     $query = "SELECT * FROM post";
@@ -171,7 +212,8 @@ if (isset($_GET['input'])) {
         echo "   </div>";
         echo "  <img src = '../Posting/" . $row['gambar'] . "' class='post-image'>";
 
-        echo '<div class="button_action">
+        echo '<span>'. $row['caption'] .'</span><br>
+              <div class="button_action">
                 <label class="icon-toggle">
                   <input type="checkbox" hidden>
                   <span class="fa-regular fa-heart"></span>
