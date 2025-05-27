@@ -68,16 +68,16 @@
     </div>
 
     <div class="settings">
-      <div class="updatedata">
+      <!-- <div class="updatedata">
         <span>New Password: </span><input class="newinput" type="password" name="newUsername" id="" placeholder="your username">
         <button class="material-icons visible" onmousedown="visibleOn(this)"  onmouseup="visibleOff(this)" >visibility_off</button>
-      </div>
-      <div class="updatedata">
-        <input class="backgroundoption" type="radio" name="backgroundcolor" onclick="changebackground()"><span>Ocean Theme</span>
-      </div>
-      <div class="updatedata">
-        <input class="backgroundoption" type="radio" name="backgroundcolor" onclick="changebackground()"><span>Ocean Theme</span>
-      </div>
+      </div> -->
+      <!-- <div class="updatedata"> -->
+        <button class="updatedata backgroundoption" onclick="changebackground()"><span>Ocean Theme</span></button>
+      <!-- </div> -->
+        <button class="updatedata backgroundoption" onclick="changebackground()"><span>Light Theme</span></button>
+        <button class="updatedata backgroundoption" onclick="changebackground()"><span>Dark Theme</span></button>
+      <a href="../Sign_in/Login/login.php">LogOut</a>
     </div>
   </body>
 </html>
