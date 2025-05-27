@@ -67,6 +67,9 @@ if (isset($_GET['input'])) {
   <link rel="stylesheet" href="../CSS/rightbar.css" />
   <link rel="stylesheet" href="../CSS/reccomended.css" />
   <link rel="stylesheet" href="../CSS/midPost.css" />
+  <link rel="stylesheet" href="../CSS/Posting.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <!--googlejquery-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -132,11 +135,12 @@ if (isset($_GET['input'])) {
 
   <!-- posting -->
   <div class="posts">
+    <div class="welcomeUser">
+      <span>WELCOME .. </span>
+    </div>
     <?php
-    
-    $query = "SELECT * FROM post"
-
-    
+    include('../Posting/Posting.php');
+    include('../Posting/Posting.php');
     ?>
   </div>
 
