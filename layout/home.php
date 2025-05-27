@@ -124,6 +124,7 @@ if (isset($_GET['input'])) {
       include('../Posting/Posting.php');
     ?>
   </div>
+  </div>
 
   <div class="rightbar">
     <!--search&follow-->
