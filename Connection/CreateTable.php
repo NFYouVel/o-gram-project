@@ -15,7 +15,9 @@ $query = "CREATE TABLE user (
     bio TEXT,
     role ENUM('member', 'admin') DEFAULT 'member',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    bgcol VARCHAR(10) DEFAULT 'white',
+    bgcol VARCHAR(10) DEFAULT 1,
+    -- bgcol2 VARCHAR(10),
+    -- bgcol3 VARCHAR(10),
     profilepic VARCHAR(255),
     bannerpic VARCHAR(255)
 );";

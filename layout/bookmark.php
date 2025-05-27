@@ -41,7 +41,7 @@
       </div>
 
       <div class="sidebarOption">
-        <a href="#" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+        <a href="../layout/profile.php?id=<?php echo $temp?>" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> perm_identity </span>
         <h2>Profile</h2>
         </a>
