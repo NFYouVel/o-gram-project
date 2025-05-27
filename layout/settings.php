@@ -14,7 +14,11 @@ $temp = "?id=" . $id;
   <link rel="stylesheet" href="../CSS/sidebar.css" />
   <link rel="stylesheet" href="../CSS/settings.css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-
+<!-- <style>
+  html{
+    --background = black;
+  }
+</style> -->
 </head>
 
 <body>
@@ -89,7 +93,7 @@ $temp = "?id=" . $id;
   <script>
     function changebackground(colorChoice) {
       var xmlhttp;
-
+      let id = <?php echo $_GET['id']?>;
       if (window.XMLHttpRequest != null) {
         xmlhttp = new XMLHttpRequest();
       }
@@ -102,7 +106,7 @@ $temp = "?id=" . $id;
           document.documentElement.style.setProperty("--background",xmlhttp.responseText);
         }
       }
-      xmlhttp.open("GET", "changeColor.php?colorChoice=" + colorChoice + "&id=<?php echo $id?>", true);
+      xmlhttp.open("GET", "changeColor.php?colorChoice=" + colorChoice + "&id="+id, true);
       xmlhttp.send();
     }
   //   function changebackground(themeId){
@@ -117,14 +121,8 @@ $temp = "?id=" . $id;
   </script>
 
   <div class="settings">
-    <!-- <div class="updatedata">
-        <span>New Password: </span><input class="newinput" type="password" name="newUsername" id="" placeholder="your username">
-        <button class="material-icons visible" onmousedown="visibleOn(this)"  onmouseup="visibleOff(this)" >visibility_off</button>
-      </div> -->
-    <!-- <div class="updatedata"> -->
     <button class="updatedata backgroundoption" onclick="changebackground(1)">Ocean Theme</button>
-    <!-- </div> -->
-    <button class="updatedata backgroundoption" onclick="changebackground(2)"><span>Light Theme</span></button>
+    <button class="updatedata backgroundoption" onclick="changebackground(2)">Light Theme</button>
     <a href="../Sign_in/Login/login.php">LogOut</a>
   </div>
 </body>
