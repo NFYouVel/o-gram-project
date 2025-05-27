@@ -147,23 +147,50 @@ if (isset($_GET['input'])) {
     $query = "SELECT * FROM post";
     $result = mysqli_query($connection, $query);
 
-    echo "<div class='posting_card'>";
     while ($row = mysqli_fetch_assoc($result)) {
-      echo "<div class='user-header'>";
-      echo "<div class='user-left'>";
-      echo "<img src = '" . $row['gambar'] . "' alt='Foto Profil'>";
-      echo "<div class='user-info'>";
-      echo "<p class='display-name'>" . $row['nickname'] . "</p>";
-      echo "<p class='username'>" . $row['username'] . "</p>";
-      echo "</div>";
-      echo "</div>";
 
-      echo "<label class='follow-toggle'>";
-      echo "<input type='checkbox' hidden />";
-      echo "<span class='follow-btn'>Follow</span>";
-      echo "</label>";
-      echo "</div>";
-      echo "<img src = '" . $row['gambar'] . "' class='post-image'>";
+      $id = $row['user_id'];
+      $query2 = "SELECT * FROM user WHERE id = '$id'";
+      $result2 = mysqli_query($connection, $query2);
+
+      while ($row2 = mysqli_fetch_array($result2)) {
+        echo "<div class='posting_card'>";
+        echo "  <div class='user-header'>";
+        echo "    <div class='user-left'>";
+        echo "      <img src = 'pfp/" . $row2['profilepic'] . "' alt='Foto Profil'>";
+        echo "        <div class='user-info'>";
+        echo "          <p class='display-name'>" . $row2['nickname'] . "</p>";
+        echo "          <p class='username'>" . $row2['username'] . "</p>";
+        echo "        </div>";
+        echo "    </div>";
+
+        echo "    <label class='follow-toggle'>";
+        echo "      <input type='checkbox' hidden />";
+        echo "      <span class='follow-btn'>Follow</span>";
+        echo "    </label>";
+        echo "   </div>";
+        echo "  <img src = '../Posting/" . $row['gambar'] . "' class='post-image'>";
+
+        echo '<div class="button_action">
+                <label class="icon-toggle">
+                  <input type="checkbox" hidden>
+                  <span class="fa-regular fa-heart"></span>
+                </label>
+                <label class="icon-toggle">
+                  <input type="checkbox" hidden>
+                  <span class="fa-regular fa-comment"></span>
+                </label>
+                <label class="icon-toggle">
+                  <input type="checkbox" hidden>
+                  <span class="fa-regular fa-bookmark"></span>
+                </label>
+                <label class="icon-toggle">
+                  <input type="checkbox" hidden>
+                  <span class="fa-solid fa-retweet"></span>
+                </label>
+              </div>
+            </div>';
+      }
     }
     ?>
     <div class="button_action">
