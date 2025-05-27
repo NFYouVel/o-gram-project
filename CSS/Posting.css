@@ -1,6 +1,7 @@
 .table_posting {
-  display: flex;
+  display: block;
   margin-top: 40px;
+  width: 410px;
 }
 
 .posting_card {
