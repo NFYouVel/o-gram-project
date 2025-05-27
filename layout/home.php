@@ -34,8 +34,9 @@ if (isset($_GET['buttonRegis'])) {
   $location = $_GET['location'];
   $bio = $_GET['bio'];
   $gender = $_GET['gender'];
+  $pfp = "avatar def.jpg";
 
-  $query = "INSERT INTO user (username, nickname, email, password, hashpassword, date_of_birth, location, phone, gender, bio, role) VALUES (
+  $query = "INSERT INTO user (username, nickname, email, password, hashpassword, date_of_birth, location, phone, gender, bio, role, profilepic) VALUES (
     '$username',
     '$nickname',
     '$email',
@@ -46,7 +47,8 @@ if (isset($_GET['buttonRegis'])) {
     '$phone',
     '$gender',
     '$bio',
-    'member'
+    'member',
+    '$pfp'
 );";
   $result = mysqli_query($connection, $query);
 

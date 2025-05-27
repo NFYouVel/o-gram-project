@@ -30,7 +30,7 @@
 .welcome-text {
     margin-top: 2vh;
     display: inline-block;
-    font-size: 3.5rem;
+    font-size: 2rem;
     font-weight: 700;
     color: #333;
     background: linear-gradient(90deg, #00c6ff, #0072ff);
