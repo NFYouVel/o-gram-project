@@ -197,6 +197,9 @@ if (isset($_GET['input'])) {
       $result2 = mysqli_query($connection, $query2);
 
       while ($row2 = mysqli_fetch_array($result2)) {
+        $post_id = $row['post_id'];
+        echo "<input type='hidden' name='post_id value='$post_id'>";
+
         echo "<div class='posting_card'>";
         echo "  <div class='user-header'>";
         echo "    <div class='user-left'>";
@@ -216,10 +219,13 @@ if (isset($_GET['input'])) {
 
         echo '<span>'. $row['caption'] .'</span><br>
               <div class="button_action">
+                
                 <label class="icon-toggle">
-                  <input type="checkbox" hidden>
+                  <input type="checkbox" name="likes" hidden>
                   <span class="fa-regular fa-heart"></span>
+                  <span>'. $row['likes'] .'</span>
                 </label>
+
                 <label class="icon-toggle">
                   <input type="checkbox" hidden>
                   <span class="fa-regular fa-comment"></span>
@@ -237,6 +243,34 @@ if (isset($_GET['input'])) {
       }
     }
     ?>
+
+<script>
+  document.querySelectorAll('.like-toggle input[type="checkbox"]').forEach((checkbox) => {
+    checkbox.addEventListener('change', function () {
+      const icon = this.nextElementSibling;
+      const counter = icon.nextElementSibling;
+      let count = parseInt(counter.textContent);
+
+      if (this.checked) {
+        count += 1;
+      } else {
+        count -= 1;
+      }
+        <?php if (isset($id)) {
+          include('Connection/Connection.php');
+
+          $id = $_GET['id'];
+          $query = "UPDATE post SET likes = likes + 1 WHERE post_id = $id";
+          mysqli_query($connection, $query);
+          
+          $getLikes = mysqli_query($connection, "SELECT likes FROM post WHERE id = $post_id");
+          $row = mysqli_fetch_assoc($getLikes);
+        }?>
+      counter.textContent = count;
+    });
+  });
+</script>
+
     <div class="button_action">
       <label class="icon-toggle">
         <input type="checkbox" hidden>
@@ -268,9 +302,11 @@ if (isset($_GET['input'])) {
         <input class="search-input" id="searchin" type="search" name="search" placeholder="search">
       </div>
     </form>
+
     <div id="searchHint">
 
     </div>
+
     <!-- recommended people -->
     <div class="reccomended">
 
