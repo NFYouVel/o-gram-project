@@ -58,7 +58,7 @@
     include("../Connection/Connection.php");
     if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $query = "SELECT * FROM user";
+    $query = "SELECT * FROM user WHERE id = '$id'";
     $result = mysqli_query($connection, $query);
 
     while ($row = mysqli_fetch_assoc($result)) {
