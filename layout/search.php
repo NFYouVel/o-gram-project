@@ -15,7 +15,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
         <!--googlejquery-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
+        <script src="../JS/ajaxlivesearchpage.js"></script>
       </head>
 
       <body>
@@ -87,7 +87,6 @@
           </form>
           <div id="searchHint">
 
-          </div>
           <div class="recommend-people">
             <h2 id="where-follow">Who to follow</h2>
             <div class="user-suggestion">
@@ -139,6 +138,7 @@
               <input type="checkbox" id="follow5" class="follow-toggle hidden">
               <label for="follow5" class="follow-btn" data-text="Follow" data-text-checked="Unfollow"></label>
             </div>
+          </div>
           </div>
         </div>
 

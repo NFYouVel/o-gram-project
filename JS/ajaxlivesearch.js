@@ -1,7 +1,7 @@
 $(document).ready(function(){
         $("#searchin").keyup(function(){
             let input = $(this).val();
-            if (!input == "") {
+            if (input !== "") {
                 $.ajax({
                 url:"../layout/livesearch.php",
                 method:"POST",
