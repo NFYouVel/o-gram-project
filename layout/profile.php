@@ -20,12 +20,13 @@
             echo "<div class='user-header'>";
                 echo "<div class='user-left'>";
                     echo "<img src= 'pfp/" . $row['profilepic'] ."' alt='Foto Profile'>";
+                echo "</div>";
                     echo "<div class='user-info'>";
                         echo "<p class = 'display-name'>" . $row['nickname'] . "</p>";
-                        echo "<p class = 'username'>" . $row['username'] . "</p>";
+                        echo "<p class = 'username'>@" . $row['username'] . "</p>";
                         echo "<br>" . "<p class = 'joined-date'>" . $row['created_at'] . "</p>";
-                    echo "</div>";
-                echo "</div>";
+                        echo "</div>";
+            echo "</div>";
     
                 echo "<label class = 'edit-toggle'>";
                     echo "<a href = '#'>Edit Profile</a>";
@@ -44,7 +45,7 @@
 
         .user-header{
             display: flex;
-            justify-content: space-between;
+            /* justify-content: space-between; */
             align-items: center;
             padding: 15px 0;
         }
@@ -62,7 +63,6 @@
         }
 
         .user-info{
-            display: flex;
             flex-direction: column;
         }
 
@@ -70,14 +70,18 @@
             color : white;
             font-weight: bold;
             margin: 0;
+            font-size: 1.4em;
         }
 
         .username{
-            color: white;
-            font-size: 1.4em;
+            color: gray;
+            font-size: 0.8em;
             margin: 0;
         }
 
+        .joined-date{
+            color : white;
+        }
 
     </style>
 </body>
