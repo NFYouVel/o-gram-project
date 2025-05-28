@@ -4,8 +4,8 @@
   box-sizing: border-box;
 }
 :root{
-  --seagram-color: #50b7f5;
-  --background: #ffffff;
+        --seagram-color: #50b7f5;
+        --background: #ffffff; 
 }
 
 
@@ -22,7 +22,7 @@
 }
 
 .icon{
-  color:var(--seagram-color);
+  color:var(--seagram-colors);
   padding-top: 20px;
   margin: 0 auto;
   width: 75px;

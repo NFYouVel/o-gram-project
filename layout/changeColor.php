@@ -10,10 +10,10 @@ include('../Connection/Connection.php');
         $color = $color["bgcol"];
 
         if($color == 1) {
-            echo "white";
+            echo "#2b5876";
         }
         else{
-            echo "black";  
+            echo "#ffffff";  
         }
 
 ?>

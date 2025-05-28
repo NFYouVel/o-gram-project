@@ -3,7 +3,22 @@
       ?>
       <!DOCTYPE html>
       <html lang="en">
+<!--bgcheck-->
+<?php
+include('../Connection/Connection.php');
+$id = $_GET['id'];
 
+$query = mysqli_query($connection, "SELECT bgcol FROM user WHERE id = '$id'");
+$row = mysqli_fetch_assoc($query);
+$bgcol = $row['bgcol'];
+
+$backgroundColor = "#ffffff"; 
+if ($bgcol == 1) {
+  $backgroundColor = "#2b5876"; 
+} else if ($bgcol == 2) {
+  $backgroundColor = "#ffffff";
+} 
+?>
       <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -16,6 +31,11 @@
         <!--googlejquery-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src="../JS/ajaxlivesearchpage.js"></script>
+        <style>
+  :root {
+    --background: <?php echo $backgroundColor; ?>;
+  }
+</style>
       </head>
 
       <body>
