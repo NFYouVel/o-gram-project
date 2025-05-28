@@ -152,6 +152,45 @@ fclose($file);
         </div>
 </body>
 
+<script>
+let xmlData;
+
+window.onload = function () {
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", "../../XML/location.xml", true);
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      xmlData = xhr.responseXML;
+    }
+  };
+  xhr.send();
+};
+
+function searchLocation() {
+  let input = document.getElementById("locationInput").value.toLowerCase();
+  let suggestions = document.getElementById("suggestions");
+  suggestions.innerHTML = "";
+
+  if (input.length === 0 || !xmlData) return;
+
+  let locations = xmlData.getElementsByTagName("location");
+
+  for (let i = 0; i < locations.length; i++) {
+    let loc = locations[i].textContent;
+    if (loc.toLowerCase().includes(input)) {
+      let div = document.createElement("div");
+      div.innerHTML = loc;
+      div.style.padding = "5px";
+      div.style.cursor = "pointer";
+      div.onclick = function () {
+        document.getElementById("locationInput").value = loc;
+        suggestions.innerHTML = "";
+      };
+      suggestions.appendChild(div);
+    }
+  }
+}
+</script>
 
 
 

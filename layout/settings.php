@@ -127,7 +127,7 @@ if ($bgcol == 1) {
   <div class="settings">
     <button class="updatedata backgroundoption" onclick="changebackground(1)">Ocean Theme</button>
     <button class="updatedata backgroundoption" onclick="changebackground(2)">Light Theme</button>
-    <a href="../Sign_in/Login/login.php">LogOut</a>
+    <a href="out.php">LogOut</a>
   </div>
 </body>
 

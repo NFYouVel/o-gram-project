@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-    
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../../CSS/login.css">
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../CSS/login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>Login</title>
 </head>
 
@@ -26,8 +26,8 @@
                 <i class='bx bxs-lock'></i>
             </div>
             <div class="forget-remember">
-                <label><input type="checkbox">Remember Me</label>
-                <a href="#">Forgot Password?</a>
+                <label><input type="checkbox" name="remember">Remember Me</label>
+                <a href="forgotPassword.php">Forgot Password?</a>
             </div>
 
             <button class="btn" name="input" value="Submit">Login</button>
@@ -40,33 +40,48 @@
     </div>
 
 
-    
-<?php
-session_start();
-include('../../Connection/Connection.php');
-    
 
+    <?php
+    session_start();
+    include('../../Connection/Connection.php');
 
-if (isset($_POST['input'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    $query = "SELECT * FROM user WHERE username = '$username'";
-    $result = mysqli_query($connection, $query);
-
-    if ($row = mysqli_fetch_array($result)) {
-        if ($row['password'] === $password) {
-            header('Location: ../../layout/home.php');
-            exit();
-        } else {
-            echo "<script>document.getElementById('response').innerText = 'Password Salah';</script>";
-        }
-    } else {
-        echo "<script>document.getElementById('response').innerText = 'Username tidak ditemukan';</script>";
+    if (isset($_COOKIE['user_id'])) {
+        header("Location: ../../layout/home.php?id=" . $_COOKIE['user_id']);
+        exit();
     }
-}
 
-?>
+    if (isset($_POST['username'])) {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        $query = "SELECT * FROM user WHERE username = '$username'";
+        $result = mysqli_query($connection, $query);
+
+        
+        // Cek apakah checkbox Remember Me dicentang
+        
+        if ($row = mysqli_fetch_array($result)) {
+
+            $_SESSION['user_id'] = $row['id'];
+            $_SESSION['username'] = $row['username'];
+            if (isset($_POST['remember'])) {
+                // Buat cookie yang tahan 30 hari
+                setcookie('user_id', $row['id'], time() + (86400 * 30), "/"); // 86400 detik = 1 hari
+                setcookie('username', $row['username'], time() + (86400 * 30), "/");
+            }
+            if ($row['password'] === $password) {
+                $location = "Location: ../../layout/home.php?id=" . $row['id'];
+                header($location);
+                exit();
+            } else {
+                echo "<script>document.getElementById('response').innerText = 'Password Salah';</script>";
+            }
+        } else {
+            echo "<script>document.getElementById('response').innerText = 'Username tidak ditemukan';</script>";
+        }
+    }
+
+    ?>
 </body>
 
 </html>
