@@ -16,7 +16,7 @@
             <span class="bio">Be Your Own Voice</span><br>
             <span class="welcome">Say what's on your mind, in seconds.
                 No filters. No limits. Just real-time expression.</span><br>
-            <button class="btn" value="Submit" onclick="focusInput()">Sign Up</button>
+            <button class="btn" value="Submit" onclick="window.location.href='../Login/login.php'">Login</button>
         </div>
     </div>
 
