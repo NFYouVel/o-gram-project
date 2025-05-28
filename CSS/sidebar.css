@@ -4,11 +4,7 @@
   box-sizing: border-box;
 }
 
-body {
-  --seagram-color: #50b7f5;
-  --background: #ffffff;
-  
-}
+
 
 .svghover {
   display: inline-block;
@@ -23,7 +19,7 @@ body {
 }
 
 .icon{
-  color:#50b7f5;
+  color:var(--seagram-colors);
   padding-top: 20px;
   margin: 0 auto;
   width: 75px;

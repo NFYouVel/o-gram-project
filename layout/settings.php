@@ -14,6 +14,12 @@ $temp = "?id=" . $id;
   <link rel="stylesheet" href="../CSS/sidebar.css" />
   <link rel="stylesheet" href="../CSS/settings.css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+   body{
+        --seagram-color: #50b7f5;
+        --background: #ffffff;
+    }
+  </style> 
 <!-- <style>
   html{
     --background = black;
@@ -22,18 +28,6 @@ $temp = "?id=" . $id;
 </head>
 
 <body>
-  <script>
-    function visibleOn(eye) {
-      let input = document.querySelector(".newinput");
-      input.type = "text";
-      eye.textContent = "visibility";
-    }
-    function visibleOff(eye) {
-      let input = document.querySelector(".newinput");
-      input.type = "password";
-      eye.textContent = "visibility_off";
-    }
-  </script>
   <div class="sidebar">
     <a href="../layout/home.php<?php echo $temp ?>" class="svghover">
       <svg class="icon" fill="currentColor" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
