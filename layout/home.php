@@ -87,7 +87,7 @@ $bgcol = $row['bgcol'];
 $backgroundColor = "#ffffff"; 
 if ($bgcol == 1) {
   $backgroundColor = "#2b5876"; 
-} else if ($bgcol == 2) {
+} else {
   $backgroundColor = "#ffffff";
 } 
 ?>
