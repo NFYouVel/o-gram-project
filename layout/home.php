@@ -74,7 +74,22 @@ if (isset($_GET['input'])) {
   }
 }
 ?>
+<!--bgcheck-->
+<?php
+include('../Connection/Connection.php');
+$id = $_GET['id'];
 
+$query = mysqli_query($connection, "SELECT bgcol FROM user WHERE id = '$id'");
+$row = mysqli_fetch_assoc($query);
+$bgcol = $row['bgcol'];
+
+$backgroundColor = "#ffffff"; 
+if ($bgcol == 1) {
+  $backgroundColor = "#2b5876"; 
+} else if ($bgcol == 2) {
+  $backgroundColor = "#ffffff";
+} 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -94,6 +109,11 @@ if (isset($_GET['input'])) {
   <!--googlejquery-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="../JS/ajaxlivesearch.js"></script>
+  <style>
+  :root {
+    --background: <?php echo $backgroundColor; ?>;
+  }
+</style>
 </head>
 
 <body>
