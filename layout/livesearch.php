@@ -8,8 +8,10 @@ if (isset($_POST['input'])) {
   while ($row = mysqli_fetch_array($sql)) {
     $name = $row["username"];
     $nickname = $row["nickname"];
+    $id = $row["id"];
     if (isset($row['profilepic'])) {
-      echo "<div class='user-suggestion'>
+      echo "<a href='../layout/searchprofile.php?id='$id'>
+      <div class='user-suggestion'>
         <img src='pfp/" . $row['profilepic'] . "' alt='Profile 1' class='profile-img'>
         <div class='user-info'>
           <p class='display-name'>" . htmlspecialchars($name) . "</p>
