@@ -75,7 +75,7 @@ $temp = $_GET['id'];
 
   <?php
     if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+      $id = $_GET['id'];
     ?>
     <?php
     include("../Connection/Connection.php");
@@ -109,10 +109,10 @@ $temp = $_GET['id'];
         echo "<div class='posting_card'>";
         echo "  <div class='user-header'>";
         echo "    <div class='user-left'>";
-        echo "      <img src = 'pfp/" . $row2['profilepic'] . "' alt='Foto Profil'>";
+        echo "      <img src = 'pfp/" . $row['profilepic'] . "' alt='Foto Profil'>";
         echo "        <div class='user-info'>";
-        echo "          <p class='display-name'>" . $row2['nickname'] . "</p>";
-        echo "          <p class='username'>" . $row2['username'] . "</p>";
+        echo "          <p class='display-name'>" . $row['nickname'] . "</p>";
+        echo "          <p class='username'>" . $row['username'] . "</p>";
         echo "        </div>";
         echo "    </div>";
 
@@ -121,15 +121,15 @@ $temp = $_GET['id'];
         echo "      <span class='follow-btn'>Follow</span>";
         echo "    </label>";
         echo "   </div>";
-        echo "  <img src = '../Posting/" . $row['gambar'] . "' class='post-image'>";
+        echo "  <img src = '../Posting/" . $row2['gambar'] . "' class='post-image'>";
 
-        echo '<span>' . $row['caption'] . '</span><br>
+        echo '<span>' . $row2['caption'] . '</span><br>
               <div class="button_action">
               
                 <label class="icon-toggle">
                   <input type="checkbox" name="likes" hidden>
                   <span class="fa-regular fa-heart"></span>
-                  <span>' . $row['likes'] . '</span>
+                  <span>' . $row2['likes'] . '</span>
                 </label>
 
                 <label class="icon-toggle">
