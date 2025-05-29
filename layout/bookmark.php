@@ -77,15 +77,14 @@ if ($bgcol == 1) {
     </div>
 
     <!-- posting -->
-      <?php
-        $post_id = $_GET['post_id'];
-        $query = "SELECT * FROM post WHERE id = '$post_id'";
-        $result = mysqli_query($connection, $query);
+      
+        <!-- // $post_id = $_GET['post_id'];
+        // $query = "SELECT * FROM post WHERE id = '$post_id'";
+        // $result = mysqli_query($connection, $query);
 
-        while ($row = mysqli_fetch_array($result)) {
+        // while ($row = mysqli_fetch_array($result)) {
           
-        }
-      ?>
+        // } -->
 
     <div class="rightbar">
     <!--search&follow-->
