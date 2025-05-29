@@ -1,3 +1,7 @@
+<?php
+session_start();
+$id = $_SESSION['user_id'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +11,7 @@
     <title>Posting Form</title>
 </head>
 <body>
+    <form method = "post" enctype="multipart/form-data" action="../layout/home.php?id=<?php echo $id;?>">
         <?php
             session_start();
             $id = $_SESSION['user_id'];

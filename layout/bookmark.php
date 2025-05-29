@@ -1,4 +1,5 @@
 <?php
+  include("../Connection/Connection.php");
 session_start();
 $id = $_SESSION['user_id'];
 $temp = $_SESSION['user_id'];
@@ -29,7 +30,9 @@ if ($bgcol == 1) {
     <link rel="stylesheet" href="../CSS/rightbar.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
     <link rel="stylesheet" href="../CSS/midPost.css" />
+    <link rel="stylesheet" href="../CSS/Posting.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
   :root {
     --background: <?php echo $backgroundColor; ?>;
@@ -81,15 +84,98 @@ if ($bgcol == 1) {
       </div>
     </div>
 
-    <!-- posting -->
-      
-        <!-- // $post_id = $_GET['post_id'];
-        // $query = "SELECT * FROM post WHERE id = '$post_id'";
-        // $result = mysqli_query($connection, $query);
+  <div class="posts">
+  <?php
+    include('../Connection/Connection.php');
+      $query = "SELECT * FROM bookmark";
+      $queryp = "SELECT * FROM post";
+      $result = mysqli_query($connection, $query);
+      $resultp = mysqli_query($connection,$queryp);
+    while ($row = mysqli_fetch_array($resultp)) {
 
-        // while ($row = mysqli_fetch_array($result)) {
-          
-        // } -->
+      while ($rowp = mysqli_fetch_assoc($result)) { // Geting post_id
+  
+        $id = $row['user_id'];
+        $query2 = "SELECT * FROM user WHERE id = '$id'";
+        $result2 = mysqli_query($connection, $query2);
+  
+        while ($row2 = mysqli_fetch_array($result2)) { // Getting user_id
+
+          echo "<div class='posting_card'>";
+          echo "  <div class='user-header'>";
+          echo "    <div class='user-left'>";
+          echo "      <img src = 'pfp/" . $row2['profilepic'] . "' alt='Foto Profil'>";
+          echo "        <div class='user-info'>";
+          echo "          <p class='display-name'>" . $row2['nickname'] . "</p>";
+          echo "          <p class='username'>" . $row2['username'] . "</p>";
+          echo "        </div>";
+          echo "    </div>";
+  
+          echo "    <label class='follow-toggle'>";
+          echo "      <input type='checkbox' hidden />";
+          echo "      <span class='follow-btn'>Follow</span>";
+          echo "    </label>";
+          echo "   </div>";
+          echo "  <img src = '../Posting/" . $row['gambar'] . "' class='post-image'>";
+  
+          echo '<span>'. $row['caption'] .'</span><br>
+                <div class="button_action">
+                  
+                  <label class="icon-toggle">
+                    <input type="checkbox" class="temporary" name="likes" hidden data-id="'. $row["post_id"] . '">
+                    <span class="fa-regular fa-heart"></span>
+                    <span>' . $row["likes"] . '</span> 
+                  </label>
+  
+
+                  <label class="icon-toggle">
+                    <input type="checkbox" hidden>
+                    <span class="fa-regular fa-comment"></span>
+                  </label>
+                  <label class="icon-toggle">
+                    <input type="checkbox" class="bookmark" hidden data-id="' .$row["post_id"].'" data-caption="'.$row["caption"].'" data-gambar="'.$row["gambar"].'" data-likes="'.$row["likes"].'">
+                    <span class="fa-regular fa-bookmark"></span>
+                    <span>'.$row["bookmarked"].'</span>
+                  </label>
+                  <label class="icon-toggle">
+                    <input type="checkbox" hidden>
+                    <span class="fa-solid fa-retweet"></span>
+                  </label>
+                </div>
+              </div>';
+        }
+      }
+    }
+  ?>
+  <!--likes-->
+    <script>
+    $(document).ready(function(){
+      $(".temporary").change(function(){
+        let postId = $(this).data("id");
+        let $countSpan = $(this).siblings("span").last();
+
+        $.post("likes.php", { id: postId }, function(response){
+            $countSpan.text(response); 
+        });
+      });
+    });
+    </script>
+    <!--bookmark-->
+    <script>
+    $(document).ready(function(){
+      $(".bookmark").change(function(){
+        let postId = $(this).data("id");
+        let caption = $(this).data("caption");
+        let image = $(this).data("gambar");
+        let likes = $(this).data("likes");
+        let $countSpan = $(this).siblings("span").last();
+         $.post("bookmarking.php", {postid:postId, caption:caption, image:image, likes:likes},function(response){
+            $countSpan.text(response); 
+        });
+      });
+    });
+    </script>
+  </div>
 
     <div class="rightbar">
     <!--search&follow-->

@@ -246,8 +246,9 @@ if ($bgcol == 1) {
                     <span class="fa-regular fa-comment"></span>
                   </label>
                   <label class="icon-toggle">
-                    <input type="checkbox" hidden>
+                    <input type="checkbox" class="bookmark" hidden data-id="' .$row["post_id"].'" data-caption="'.$row["caption"].'" data-gambar="'.$row["gambar"].'" data-likes="'.$row["likes"].'">
                     <span class="fa-regular fa-bookmark"></span>
+                    <span>'.$row["bookmarked"].'</span>
                   </label>
                   <label class="icon-toggle">
                     <input type="checkbox" hidden>
@@ -258,6 +259,7 @@ if ($bgcol == 1) {
         }
       }
     ?>
+    <!--likes-->
     <script>
     $(document).ready(function(){
       $(".temporary").change(function(){
@@ -269,10 +271,23 @@ if ($bgcol == 1) {
         });
       });
     });
-
     </script>
-
-    <div class="button_action">
+    <!--bookmark-->
+    <script>
+    $(document).ready(function(){
+      $(".bookmark").change(function(){
+        let postId = $(this).data("id");
+        let caption = $(this).data("caption");
+        let image = $(this).data("gambar");
+        let likes = $(this).data("likes");
+        let $countSpan = $(this).siblings("span").last();
+         $.post("bookmarking.php", {postid:postId, caption:caption, image:image, likes:likes},function(response){
+            $countSpan.text(response); 
+        });
+      });
+    });
+    </script>
+    <!-- <div class="button_action">
       <label class="icon-toggle">
         <input type="checkbox" hidden>
         <span class="fa-regular fa-heart"></span>
@@ -289,7 +304,7 @@ if ($bgcol == 1) {
         <input type="checkbox" hidden>
         <span class="fa-solid fa-retweet"></span>
       </label>
-    </div>
+    </div> -->
   </div>
   </div>
 
@@ -347,10 +362,8 @@ if ($bgcol == 1) {
     <div>
 
     </div>
-    <div class="footer">
       <hr>
       <span>seagram 2025</span>
-    </div>
   </div>
 </body>
 
