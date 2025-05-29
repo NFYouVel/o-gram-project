@@ -252,7 +252,7 @@ if ($bgcol == 1) {
 
                   <label class="icon-toggle">
                     <input type="checkbox" hidden>
-                    <span class="fa-regular fa-comment"></span>
+                    <a href="comment.php?id='. $row['post_id'] . '"><span class="fa-regular fa-comment"></span></a>
                   </label>
                   <label class="icon-toggle">
                     <input type="checkbox" class="bookmark" hidden data-id="' .$row["post_id"].'">
@@ -268,6 +268,8 @@ if ($bgcol == 1) {
         }
       }
     ?>
+    <!-- comment -->
+     
     <!--likes-->
     <script>
     $(document).ready(function(){
