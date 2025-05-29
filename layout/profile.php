@@ -7,18 +7,18 @@ $temp = $_SESSION['user_id'];
 ?>
 <!--bgcheck-->
 <?php
-include('../Connection/Connection.php');
+// include('../Connection/Connection.php');
 
-$query = mysqli_query($connection, "SELECT bgcol FROM user WHERE id = '$id'");
-$row = mysqli_fetch_assoc($query);
-$bgcol = $row['bgcol'];
+// $query = mysqli_query($connection, "SELECT bgcol FROM user WHERE id = '$id'");
+// $row = mysqli_fetch_assoc($query);
+// $bgcol = $row['bgcol'];
 
-$backgroundColor = "#ffffff";
-if ($bgcol == 1) {
-  $backgroundColor = "#2b5876";
-} else if ($bgcol == 2) {
-  $backgroundColor = "#ffffff";
-}
+// $backgroundColor = "#ffffff";
+// if ($bgcol == 1) {
+//   $backgroundColor = "#2b5876";
+// } else if ($bgcol == 2) {
+//   $backgroundColor = "#ffffff";
+// }
 ?>
 
 <?php

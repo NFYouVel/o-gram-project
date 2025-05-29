@@ -8,7 +8,8 @@
 </head>
 <body>
         <?php
-            $id = $_GET['id'];
+            session_start();
+            $id = $_SESSION['user_id'];
         ?>
     <form method = "post" enctype="multipart/form-data" action="../layout/home.php?id=<?php echo $id;?>">
         <input type="hidden" name="id" value="<?php echo $id ?>">
