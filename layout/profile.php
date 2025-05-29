@@ -1,7 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-$temp = $_GET['id'];
+session_start();
+$id = $_SESSION['user_id'];
+$temp = $_SESSION['user_id'];
+?>
+<!--bgcheck-->
+<?php
+include('../Connection/Connection.php');
+
+$query = mysqli_query($connection, "SELECT bgcol FROM user WHERE id = '$id'");
+$row = mysqli_fetch_assoc($query);
+$bgcol = $row['bgcol'];
+
+$backgroundColor = "#ffffff";
+if ($bgcol == 1) {
+  $backgroundColor = "#2b5876";
+} else if ($bgcol == 2) {
+  $backgroundColor = "#ffffff";
+}
 ?>
 
 <?php
@@ -41,12 +58,17 @@ if (isset($_POST['Save'])) {
   <link rel="stylesheet" href="../CSS/rightbar.css" />
   <link rel="stylesheet" href="../CSS/search.css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+    :root {
+      --background: <?php echo $backgroundColor; ?>;
+    }
+  </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
   <div class="sidebar">
-    <a href="../layout/home.php?id=<?php echo $temp ?>" class="svghover">
+    <a href="../layout/home.php?id=" class="svghover">
       <svg class="icon" fill="currentColor" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 264.564 264.564" xml:space="preserve" stroke="#50b7f5">
         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -63,7 +85,7 @@ if (isset($_POST['Save'])) {
       </svg>
     </a>
     <div class="sidebarOption">
-      <a href="../layout/home.php?id=<?php echo $temp ?>"
+      <a href="../layout/home.php"
         style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> home </span>
         <h2>Home</h2>
@@ -71,7 +93,7 @@ if (isset($_POST['Save'])) {
     </div>
 
     <div class="sidebarOption">
-      <a href="../layout/search.php?id=<?php echo $temp ?>"
+      <a href="../layout/search.php"
         style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> search </span>
         <h2>Explore</h2>
@@ -79,7 +101,7 @@ if (isset($_POST['Save'])) {
     </div>
 
     <div class="sidebarOption ">
-      <a href="../layout/bookmark.php?id=<?php echo $temp ?>"
+      <a href="../layout/bookmark.php"
         style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> bookmark </span>
         <h2>Bookmarks</h2>
@@ -94,7 +116,7 @@ if (isset($_POST['Save'])) {
     </div>
 
     <div class="sidebarOption">
-      <a href="../layout/settings.php?id=<?php echo $temp ?>"
+      <a href="../layout/settings.php"
         style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> settings </span>
         <h2>Settings</h2>
@@ -103,10 +125,13 @@ if (isset($_POST['Save'])) {
   </div>
 
   <?php
-  $id = $_GET['id'];
-  include("../Connection/Connection.php");
-  $query = "SELECT * FROM user WHERE id = '$id'";
-  $result = mysqli_query($connection, $query);
+  if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+  ?>
+  <?php
+    include("../Connection/Connection.php");
+    $query = "SELECT * FROM user WHERE id = '$id'";
+    $result = mysqli_query($connection, $query);
 
   while ($row = mysqli_fetch_array($result)) {
   echo "<div class='profile-page'>";
@@ -168,6 +193,7 @@ if (isset($_POST['Save'])) {
                 </div>
               </div>';
       }
+    }
   echo "</div>";
   }
 ?>

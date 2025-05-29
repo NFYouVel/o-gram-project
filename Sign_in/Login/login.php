@@ -46,7 +46,7 @@
     include('../../Connection/Connection.php');
 
     if (isset($_COOKIE['user_id'])) {
-        header("Location: ../../layout/home.php?id=" . $_COOKIE['user_id']);
+        header("Location: ../../layout/home.php");
         exit();
     }
 
@@ -66,11 +66,11 @@
             $_SESSION['username'] = $row['username'];
             if (isset($_POST['remember'])) {
                 // Buat cookie yang tahan 30 hari
-                setcookie('user_id', $row['id'], time() + (86400 * 30), "/"); // 86400 detik = 1 hari
+                setcookie('user_id', $row['id'], time() + (86400 * 30), "/"); //1 hari
                 setcookie('username', $row['username'], time() + (86400 * 30), "/");
             }
             if ($row['password'] === $password) {
-                $location = "Location: ../../layout/home.php?id=" . $row['id'];
+                $location = "Location: ../../layout/home.php";
                 header($location);
                 exit();
             } else {

@@ -1,4 +1,6 @@
 <?php
+session_start();
+$id = $_SESSION['user_id'];
 
 include('../Connection/Connection.php');
 
@@ -19,9 +21,6 @@ if (isset($_POST['upload'])) {
   } 
 }
 
-if (isset($_GET['id'])) {
-  $id = $_GET['id'];
-}
 
 if (isset($_GET['buttonRegis'])) {
 
@@ -37,7 +36,7 @@ if (isset($_GET['buttonRegis'])) {
   $gender = $_GET['gender'];
   $pfp = "avatar def.jpg";
 
-  $query = "INSERT INTO user (username, nickname, email, password, hashpassword, date_of_birth, location, phone, gender, bio, role, profilepic) VALUES (
+  $query = "INSERT INTO user (username, nickname, email, password, hashpassword, date_of_birth, location, phone, gender, bio, role, profilepic, bgcol) VALUES (
     '$username',
     '$nickname',
     '$email',
@@ -49,17 +48,13 @@ if (isset($_GET['buttonRegis'])) {
     '$gender',
     '$bio',
     'member',
-    '$pfp'
+    '$pfp',
+    'white'
 );";
   $result = mysqli_query($connection, $query);
 
   $query = "SELECT id FROM user WHERE username = '$username' LIMIT 1";
   $result = mysqli_query($connection, $query);
-  $i;
-
-  if ($row = mysqli_fetch_array($result)) {
-    $id = $row['id'];
-  }
 }
 
 if (isset($_GET['input'])) {
@@ -103,6 +98,7 @@ if ($bgcol == 1) {
   <link rel="stylesheet" href="../CSS/reccomended.css" />
   <link rel="stylesheet" href="../CSS/midPost.css" />
   <link rel="stylesheet" href="../CSS/Posting.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
@@ -118,7 +114,7 @@ if ($bgcol == 1) {
 
 <body>
   <div class="sidebar">
-    <a href="../layout/home.php<?php echo $temp ?>" class="svghover">
+    <a href="../layout/home.php" class="svghover">
       <svg class="icon" fill="currentColor" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 264.564 264.564" xml:space="preserve" stroke="#50b7f5">
         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -147,7 +143,7 @@ if ($bgcol == 1) {
         $temp = "?id=" . $id;
       }
       ?>
-      <a href="../layout/search.php<?php echo $temp ?>"
+      <a href="../layout/search.php"
         style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> search </span>
         <h2>Explore</h2>
@@ -155,7 +151,7 @@ if ($bgcol == 1) {
     </div>
 
     <div class="sidebarOption">
-      <a href="../layout/bookmark.php<?php echo $temp ?>"
+      <a href="../layout/bookmark.php"
         style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> bookmark </span>
         <h2>Bookmarks</h2>
@@ -163,7 +159,7 @@ if ($bgcol == 1) {
     </div>
 
     <div class="sidebarOption">
-      <a href="../layout/profile.php<?php echo $temp ?>"
+      <a href="../layout/profile.php"
         style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> perm_identity </span>
         <h2>Profile</h2>
@@ -171,7 +167,7 @@ if ($bgcol == 1) {
     </div>
 
     <div class="sidebarOption">
-      <a href="../layout/settings.php<?php echo $temp ?>"
+      <a href="../layout/settings.php"
         style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> settings </span>
         <h2>Settings</h2>
@@ -210,13 +206,14 @@ if ($bgcol == 1) {
       $query = "SELECT * FROM post";
       $result = mysqli_query($connection, $query);
   
-      while ($row = mysqli_fetch_assoc($result)) {
+      while ($row = mysqli_fetch_assoc($result)) { // Geting post_id
   
         $id = $row['user_id'];
         $query2 = "SELECT * FROM user WHERE id = '$id'";
         $result2 = mysqli_query($connection, $query2);
   
-        while ($row2 = mysqli_fetch_array($result2)) {
+        while ($row2 = mysqli_fetch_array($result2)) { // Getting user_id
+
           echo "<div class='posting_card'>";
           echo "  <div class='user-header'>";
           echo "    <div class='user-left'>";
@@ -238,11 +235,12 @@ if ($bgcol == 1) {
                 <div class="button_action">
                   
                   <label class="icon-toggle">
-                    <input type="checkbox" name="likes" hidden>
+                    <input type="checkbox" class="temporary" name="likes" hidden data-id="'. $row["post_id"] . '">
                     <span class="fa-regular fa-heart"></span>
-                    <span>'. $row['likes'] .'</span>
+                    <span>' . $row["likes"] . '</span> 
                   </label>
   
+
                   <label class="icon-toggle">
                     <input type="checkbox" hidden>
                     <span class="fa-regular fa-comment"></span>
@@ -260,6 +258,19 @@ if ($bgcol == 1) {
         }
       }
     ?>
+    <script>
+    $(document).ready(function(){
+      $(".temporary").change(function(){
+        let postId = $(this).data("id");
+        let $countSpan = $(this).siblings("span").last();
+
+        $.post("likes.php", { id: postId }, function(response){
+            $countSpan.text(response); 
+        });
+      });
+    });
+
+    </script>
 
     <div class="button_action">
       <label class="icon-toggle">

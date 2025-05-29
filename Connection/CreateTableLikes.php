@@ -1,10 +1,10 @@
 <?php
     include('Connection.php');
 
-    $query = "CREATE TABLE post (
+    $query = "CREATE TABLE likes (
         likes_id INT AUTO_INCREMENT PRIMARY KEY,
         user_id INT NOT NULL,
-        post_id INT NOT NULL,
+        post_id INT NOT NULL
     );";
     
     $result = mysqli_query($connection,$query);
