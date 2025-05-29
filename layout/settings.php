@@ -1,6 +1,7 @@
 <?php
-$id = $_GET['id'];
-$temp = "?id=" . $id;
+session_start();
+$id = $_SESSION['user_id'];
+$temp = $_SESSION['user_id'];
 ?>
 <!--bgcheck-->
 <?php
@@ -10,12 +11,12 @@ $query = mysqli_query($connection, "SELECT bgcol FROM user WHERE id = '$id'");
 $row = mysqli_fetch_assoc($query);
 $bgcol = $row["bgcol"];
 
-$backgroundColor = "#ffffff"; 
+$backgroundColor = "#ffffff";
 if ($bgcol == 1) {
-  $backgroundColor = "#2b5876"; 
+  $backgroundColor = "#2b5876";
 } else if ($bgcol == 2) {
   $backgroundColor = "#ffffff";
-} 
+}
 ?>
 
 <!DOCTYPE html>
@@ -33,15 +34,15 @@ if ($bgcol == 1) {
   <link rel="stylesheet" href="../CSS/midPost.css" />
 
   <style>
-  :root {
-    --background: <?php echo $backgroundColor; ?>;
-  }
-</style>
+    :root {
+      --background: <?php echo $backgroundColor; ?>;
+    }
+  </style>
 </head>
 
 <body>
   <div class="sidebar">
-    <a href="../layout/home.php<?php echo $temp ?>" class="svghover">
+    <a href="../layout/home.php" class="svghover">
       <svg class="icon" fill="currentColor" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 264.564 264.564" xml:space="preserve" stroke="#50b7f5">
         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -58,7 +59,7 @@ if ($bgcol == 1) {
       </svg>
     </a>
     <div class="sidebarOption">
-      <a href="../layout/home.php<?php echo $temp ?>"
+      <a href="../layout/home.php"
         style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> home </span>
         <h2>Home</h2>
@@ -66,7 +67,7 @@ if ($bgcol == 1) {
     </div>
 
     <div class="sidebarOption">
-      <a href="../layout/search.php<?php echo $temp ?>"
+      <a href="../layout/search.php"
         style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> search </span>
         <h2>Explore</h2>
@@ -74,7 +75,7 @@ if ($bgcol == 1) {
     </div>
 
     <div class="sidebarOption">
-      <a href="../layout/bookmark.php<?php echo $temp ?>"
+      <a href="../layout/bookmark.php"
         style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> bookmark </span>
         <h2>Bookmarks</h2>
@@ -82,7 +83,7 @@ if ($bgcol == 1) {
     </div>
 
     <div class="sidebarOption">
-      <a href="../layout/profile.php<?php echo $temp ?>" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+      <a href="../layout/profile.php" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> perm_identity </span>
         <h2>Profile</h2>
       </a>
@@ -99,31 +100,30 @@ if ($bgcol == 1) {
   <script>
     function changebackground(colorChoice) {
       var xmlhttp;
-      let id = <?php echo json_encode($id)?>;
+      let id = <?php echo json_encode($id) ?>;
       if (window.XMLHttpRequest != null) {
         xmlhttp = new XMLHttpRequest();
-      }
-      else {
+      } else {
         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
       }
 
-      xmlhttp.onreadystatechange = function () {
+      xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-          document.documentElement.style.setProperty("--background",xmlhttp.responseText);
+          document.documentElement.style.setProperty("--background", xmlhttp.responseText);
         }
       }
-      xmlhttp.open("GET", "changeColor.php?colorChoice=" + colorChoice + "&id="+id, true);
+      xmlhttp.open("GET", "changeColor.php?colorChoice=" + colorChoice + "&id=" + id, true);
       xmlhttp.send();
     }
-  //   function changebackground(themeId){
-  //   if (themeId === 1) {
-  //     document.body.style.background = 'linear-gradient(to right, #2b5876, #4e4376)';
-  //   } else if (themeId === 2) {
-  //     document.body.style.background = '#ffffff';
-  //   } else if (themeId === 3) {
-  //     document.body.style.background = '#1a1a1a';
-  //   }
-  // }
+    //   function changebackground(themeId){
+    //   if (themeId === 1) {
+    //     document.body.style.background = 'linear-gradient(to right, #2b5876, #4e4376)';
+    //   } else if (themeId === 2) {
+    //     document.body.style.background = '#ffffff';
+    //   } else if (themeId === 3) {
+    //     document.body.style.background = '#1a1a1a';
+    //   }
+    // }
   </script>
 
   <div class="settings">

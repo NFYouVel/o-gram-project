@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-$id = $_GET["id"];
-$temp = $_GET['id'];
+session_start();
+$id = $_SESSION['user_id'];
+$temp = $_SESSION['user_id'];
 ?>
 <!--bgcheck-->
 <?php
 include('../Connection/Connection.php');
-$id = $_GET['id'];
 
 $query = mysqli_query($connection, "SELECT bgcol FROM user WHERE id = '$id'");
 $row = mysqli_fetch_assoc($query);
 $bgcol = $row['bgcol'];
 
-$backgroundColor = "#ffffff"; 
+$backgroundColor = "#ffffff";
 if ($bgcol == 1) {
-  $backgroundColor = "#2b5876"; 
+  $backgroundColor = "#2b5876";
 } else if ($bgcol == 2) {
   $backgroundColor = "#ffffff";
-} 
+}
 ?>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,15 +31,15 @@ if ($bgcol == 1) {
   <link rel="stylesheet" href="../CSS/search.css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <style>
-  :root {
-    --background: <?php echo $backgroundColor; ?>;
-  }
+    :root {
+      --background: <?php echo $backgroundColor; ?>;
+    }
   </style>
 </head>
 
 <body>
   <div class="sidebar">
-    <a href="../layout/home.php<?php echo $temp ?>" class="svghover">
+    <a href="../layout/home.php" class="svghover">
       <svg class="icon" fill="currentColor" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 264.564 264.564" xml:space="preserve" stroke="#50b7f5">
         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -55,7 +56,7 @@ if ($bgcol == 1) {
       </svg>
     </a>
     <div class="sidebarOption">
-      <a href="../layout/home.php?id=<?php echo $temp ?>"
+      <a href="../layout/home.php"
         style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> home </span>
         <h2>Home</h2>
@@ -63,7 +64,7 @@ if ($bgcol == 1) {
     </div>
 
     <div class="sidebarOption">
-      <a href="../layout/search.php?id=<?php echo $temp ?>"
+      <a href="../layout/search.php"
         style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> search </span>
         <h2>Explore</h2>
@@ -71,7 +72,7 @@ if ($bgcol == 1) {
     </div>
 
     <div class="sidebarOption ">
-      <a href="../layout/bookmark.php?id=<?php echo $temp ?>"
+      <a href="../layout/bookmark.php"
         style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> bookmark </span>
         <h2>Bookmarks</h2>
@@ -86,7 +87,7 @@ if ($bgcol == 1) {
     </div>
 
     <div class="sidebarOption">
-      <a href="../layout/settings.php?id=<?php echo $temp ?>"
+      <a href="../layout/settings.php"
         style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> settings </span>
         <h2>Settings</h2>
@@ -95,10 +96,10 @@ if ($bgcol == 1) {
   </div>
 
   <?php
-    if (isset($_GET['id'])) {
-      $id = $_GET['id'];
-    ?>
-    <?php
+  if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+  ?>
+  <?php
     include("../Connection/Connection.php");
     $query = "SELECT * FROM user WHERE id = '$id'";
     $result = mysqli_query($connection, $query);
@@ -169,7 +170,6 @@ if ($bgcol == 1) {
             </div>';
       }
     }
-
   }
   ?>
 </body>

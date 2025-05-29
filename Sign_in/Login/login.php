@@ -46,7 +46,7 @@
     include('../../Connection/Connection.php');
 
     if (isset($_COOKIE['user_id'])) {
-        header("Location: ../../layout/home.php?id=" . $_COOKIE['user_id']);
+        header("Location: ../../layout/home.php");
         exit();
     }
 
@@ -70,7 +70,7 @@
                 setcookie('username', $row['username'], time() + (86400 * 30), "/");
             }
             if ($row['password'] === $password) {
-                $location = "Location: ../../layout/home.php?id=" . $row['id'];
+                $location = "Location: ../../layout/home.php";
                 header($location);
                 exit();
             } else {

@@ -1,4 +1,6 @@
 <?php
+session_start();
+$id = $_SESSION['user_id'];
 
 include('../Connection/Connection.php');
 
@@ -19,9 +21,6 @@ if (isset($_POST['upload'])) {
   } 
 }
 
-if (isset($_GET['id'])) {
-  $id = $_GET['id'];
-}
 
 if (isset($_GET['buttonRegis'])) {
 
@@ -56,11 +55,6 @@ if (isset($_GET['buttonRegis'])) {
 
   $query = "SELECT id FROM user WHERE username = '$username' LIMIT 1";
   $result = mysqli_query($connection, $query);
-  $i;
-
-  if ($row = mysqli_fetch_array($result)) {
-    $id = $row['id'];
-  }
 }
 
 if (isset($_GET['input'])) {
@@ -120,7 +114,7 @@ if ($bgcol == 1) {
 
 <body>
   <div class="sidebar">
-    <a href="../layout/home.php<?php echo $temp ?>" class="svghover">
+    <a href="../layout/home.php" class="svghover">
       <svg class="icon" fill="currentColor" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 264.564 264.564" xml:space="preserve" stroke="#50b7f5">
         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -149,7 +143,7 @@ if ($bgcol == 1) {
         $temp = "?id=" . $id;
       }
       ?>
-      <a href="../layout/search.php<?php echo $temp ?>"
+      <a href="../layout/search.php"
         style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> search </span>
         <h2>Explore</h2>
@@ -157,7 +151,7 @@ if ($bgcol == 1) {
     </div>
 
     <div class="sidebarOption">
-      <a href="../layout/bookmark.php<?php echo $temp ?>"
+      <a href="../layout/bookmark.php"
         style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> bookmark </span>
         <h2>Bookmarks</h2>
@@ -165,7 +159,7 @@ if ($bgcol == 1) {
     </div>
 
     <div class="sidebarOption">
-      <a href="../layout/profile.php<?php echo $temp ?>"
+      <a href="../layout/profile.php"
         style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> perm_identity </span>
         <h2>Profile</h2>
@@ -173,7 +167,7 @@ if ($bgcol == 1) {
     </div>
 
     <div class="sidebarOption">
-      <a href="../layout/settings.php<?php echo $temp ?>"
+      <a href="../layout/settings.php"
         style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> settings </span>
         <h2>Settings</h2>

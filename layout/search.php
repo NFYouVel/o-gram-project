@@ -1,24 +1,26 @@
       <?php
-      $temp = $_GET['id'];
+     session_start();
+     $id = $_SESSION['user_id'];
+     $temp = $_SESSION['user_id'];
       ?>
       <!DOCTYPE html>
       <html lang="en">
-<!--bgcheck-->
-<?php
-include('../Connection/Connection.php');
-$id = $_GET['id'];
+      <!--bgcheck-->
+      <?php
+      include('../Connection/Connection.php');
 
-$query = mysqli_query($connection, "SELECT bgcol FROM user WHERE id = '$id'");
-$row = mysqli_fetch_assoc($query);
-$bgcol = $row['bgcol'];
+      $query = mysqli_query($connection, "SELECT bgcol FROM user WHERE id = '$id'");
+      $row = mysqli_fetch_assoc($query);
+      $bgcol = $row['bgcol'];
 
-$backgroundColor = "#ffffff"; 
-if ($bgcol == 1) {
-  $backgroundColor = "#2b5876"; 
-} else if ($bgcol == 2) {
-  $backgroundColor = "#ffffff";
-} 
-?>
+      $backgroundColor = "#ffffff";
+      if ($bgcol == 1) {
+        $backgroundColor = "#2b5876";
+      } else if ($bgcol == 2) {
+        $backgroundColor = "#ffffff";
+      }
+      ?>
+
       <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -29,20 +31,20 @@ if ($bgcol == 1) {
         <link rel="stylesheet" href="../CSS/search.css" />
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
         <link rel="stylesheet" href="../CSS/midPost.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         <!--googlejquery-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <script src="../JS/ajaxlivesearchpage.js"></script>
         <style>
-  :root {
-    --background: <?php echo $backgroundColor; ?>;
-  }
-</style>
+          :root {
+            --background: <?php echo $backgroundColor; ?>;
+          }
+        </style>
       </head>
 
       <body>
         <div class="sidebar">
-          <a href="../layout/home.php?id=<?php echo $temp ?>" class="svghover">
+          <a href="../layout/home.php" class="svghover">
             <svg class="icon" fill="currentColor" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 264.564 264.564" xml:space="preserve" stroke="#50b7f5">
               <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -59,7 +61,7 @@ if ($bgcol == 1) {
             </svg>
           </a>
           <div class="sidebarOption">
-            <a href="../layout/home.php?id=<?php echo $temp ?>" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+            <a href="../layout/home.php" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
               <span class="material-icons"> home </span>
               <h2>Home</h2>
             </a>
@@ -73,7 +75,7 @@ if ($bgcol == 1) {
           </div>
 
           <div class="sidebarOption">
-            <a href="../layout/bookmark.php?id=<?php echo $temp?>"
+            <a href="../layout/bookmark.php"
               style="display: flex; align-items: center; text-decoration: none; color: inherit;">
               <span class="material-icons"> bookmark </span>
               <h2>Bookmarks</h2>
@@ -81,14 +83,14 @@ if ($bgcol == 1) {
           </div>
 
           <div class="sidebarOption">
-            <a href="../layout/profile.php?id=<?php echo $temp?>" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+            <a href="../layout/profile.php" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
               <span class="material-icons"> perm_identity </span>
               <h2>Profile</h2>
             </a>
           </div>
 
           <div class="sidebarOption">
-            <a href="../layout/settings.php?id=<?php echo $temp?>"
+            <a href="../layout/settings.php"
               style="display: flex; align-items: center; text-decoration: none; color: inherit;">
               <span class="material-icons"> settings </span>
               <h2>Settings</h2>
@@ -101,7 +103,7 @@ if ($bgcol == 1) {
         <div class="posts">
 
           <form class="searchcontainer" action="">
-            <a href="../Posting/PostingForm.php?id=<?php echo $temp ?>" class="createpost search">Create Post</a>
+            <a href="../Posting/PostingForm.php" class="createpost search">Create Post</a>
             <div class="search">
               <span class="material-icons"> search </span>
               <input class="search-input long" id="searchin" type="search" placeholder="search">
@@ -109,58 +111,58 @@ if ($bgcol == 1) {
           </form>
           <div id="searchHint">
 
-          <div class="recommend-people">
-            <h2 id="where-follow">Who to follow</h2>
-            <div class="user-suggestion">
-              <img src="../layout/pict/Screenshot (10).png" alt="Profile 1" class="profile-img">
-              <div class="user-info">
-                <p class="display-name">David</p>
-                <p class="username">@DavidChristian</p>
+            <div class="recommend-people">
+              <h2 id="where-follow">Who to follow</h2>
+              <div class="user-suggestion">
+                <img src="../layout/pict/Screenshot (10).png" alt="Profile 1" class="profile-img">
+                <div class="user-info">
+                  <p class="display-name">David</p>
+                  <p class="username">@DavidChristian</p>
+                </div>
+                <input type="checkbox" id="follow1" class="follow-toggle hidden">
+                <label for="follow1" class="follow-btn" data-text="Follow" data-text-checked="Unfollow"></label>
               </div>
-              <input type="checkbox" id="follow1" class="follow-toggle hidden">
-              <label for="follow1" class="follow-btn" data-text="Follow" data-text-checked="Unfollow"></label>
-            </div>
 
-            <div class="user-suggestion">
-              <img src="../layout/pict/Screenshot (11).png" alt="Profile 2" class="profile-img">
-              <div class="user-info">
-                <p class="display-name">James</p>
-                <p class="username">@KohJiaQuan</p>
+              <div class="user-suggestion">
+                <img src="../layout/pict/Screenshot (11).png" alt="Profile 2" class="profile-img">
+                <div class="user-info">
+                  <p class="display-name">James</p>
+                  <p class="username">@KohJiaQuan</p>
+                </div>
+                <input type="checkbox" id="follow2" class="follow-toggle hidden">
+                <label for="follow2" class="follow-btn" data-text="Follow" data-text-checked="Unfollow"></label>
               </div>
-              <input type="checkbox" id="follow2" class="follow-toggle hidden">
-              <label for="follow2" class="follow-btn" data-text="Follow" data-text-checked="Unfollow"></label>
-            </div>
 
-            <div class="user-suggestion">
-              <img src="../layout/pict/Screenshot (14).png" alt="Profile 3" class="profile-img">
-              <div class="user-info">
-                <p class="display-name">Marvel</p>
-                <p class="username">@MarvelMoshing</p>
+              <div class="user-suggestion">
+                <img src="../layout/pict/Screenshot (14).png" alt="Profile 3" class="profile-img">
+                <div class="user-info">
+                  <p class="display-name">Marvel</p>
+                  <p class="username">@MarvelMoshing</p>
+                </div>
+                <input type="checkbox" id="follow3" class="follow-toggle hidden">
+                <label for="follow3" class="follow-btn" data-text="Follow" data-text-checked="Unfollow"></label>
               </div>
-              <input type="checkbox" id="follow3" class="follow-toggle hidden">
-              <label for="follow3" class="follow-btn" data-text="Follow" data-text-checked="Unfollow"></label>
-            </div>
 
-            <div class="user-suggestion">
-              <img src="../layout/pict/Screenshot (14).png" alt="Profile 4" class="profile-img">
-              <div class="user-info">
-                <p class="display-name">Leon</p>
-                <p class="username">@LeonardPig</p>
+              <div class="user-suggestion">
+                <img src="../layout/pict/Screenshot (14).png" alt="Profile 4" class="profile-img">
+                <div class="user-info">
+                  <p class="display-name">Leon</p>
+                  <p class="username">@LeonardPig</p>
+                </div>
+                <input type="checkbox" id="follow4" class="follow-toggle hidden">
+                <label for="follow4" class="follow-btn" data-text="Follow" data-text-checked="Unfollow"></label>
               </div>
-              <input type="checkbox" id="follow4" class="follow-toggle hidden">
-              <label for="follow4" class="follow-btn" data-text="Follow" data-text-checked="Unfollow"></label>
-            </div>
 
-            <div class="user-suggestion">
-              <img src="../layout/pict/Screenshot (14).png" alt="Profile 5" class="profile-img">
-              <div class="user-info">
-                <p class="display-name">McQueen</p>
-                <p class="username">@LightningMcQueen</p>
+              <div class="user-suggestion">
+                <img src="../layout/pict/Screenshot (14).png" alt="Profile 5" class="profile-img">
+                <div class="user-info">
+                  <p class="display-name">McQueen</p>
+                  <p class="username">@LightningMcQueen</p>
+                </div>
+                <input type="checkbox" id="follow5" class="follow-toggle hidden">
+                <label for="follow5" class="follow-btn" data-text="Follow" data-text-checked="Unfollow"></label>
               </div>
-              <input type="checkbox" id="follow5" class="follow-toggle hidden">
-              <label for="follow5" class="follow-btn" data-text="Follow" data-text-checked="Unfollow"></label>
             </div>
-          </div>
           </div>
         </div>
 
