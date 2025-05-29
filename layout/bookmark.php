@@ -78,6 +78,7 @@ if ($bgcol == 1) {
 
     <!-- posting -->
       <?php
+      if (isset($post_id)) {
         $post_id = $_GET['post_id'];
         $query = "SELECT * FROM post WHERE id = '$post_id'";
         $result = mysqli_query($connection, $query);
@@ -85,6 +86,7 @@ if ($bgcol == 1) {
         while ($row = mysqli_fetch_array($result)) {
           
         }
+      }
       ?>
 
     <div class="rightbar">

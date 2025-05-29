@@ -66,7 +66,7 @@
             $_SESSION['username'] = $row['username'];
             if (isset($_POST['remember'])) {
                 // Buat cookie yang tahan 30 hari
-                setcookie('user_id', $row['id'], time() + (86400 * 30), "/"); // 86400 detik = 1 hari
+                setcookie('user_id', $row['id'], time() + (86400 * 30), "/"); //1 hari
                 setcookie('username', $row['username'], time() + (86400 * 30), "/");
             }
             if ($row['password'] === $password) {

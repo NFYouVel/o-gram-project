@@ -104,6 +104,7 @@ if ($bgcol == 1) {
   <link rel="stylesheet" href="../CSS/reccomended.css" />
   <link rel="stylesheet" href="../CSS/midPost.css" />
   <link rel="stylesheet" href="../CSS/Posting.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
@@ -211,13 +212,14 @@ if ($bgcol == 1) {
     $query = "SELECT * FROM post";
     $result = mysqli_query($connection, $query);
 
-    while ($row = mysqli_fetch_assoc($result)) {
+    while ($row = mysqli_fetch_assoc($result)) { // Geting post_id
 
       $id = $row['user_id'];
       $query2 = "SELECT * FROM user WHERE id = '$id'";
       $result2 = mysqli_query($connection, $query2);
 
-      while ($row2 = mysqli_fetch_array($result2)) {
+      while ($row2 = mysqli_fetch_array($result2)) { // Getting user_id
+
         echo "<div class='posting_card'>";
         echo "  <div class='user-header'>";
         echo "    <div class='user-left'>";
@@ -239,10 +241,11 @@ if ($bgcol == 1) {
               <div class="button_action">
                 
                 <label class="icon-toggle">
-                  <input type="checkbox" name="likes" hidden>
+                  <input type="checkbox" class="temporary" name="likes" hidden data-id="'. $row["post_id"] . '">
                   <span class="fa-regular fa-heart"></span>
-                  <span>'. $row['likes'] .'</span>
+                  <span>' . $row["likes"] . '</span> 
                 </label>
+
 
                 <label class="icon-toggle">
                   <input type="checkbox" hidden>
@@ -261,6 +264,20 @@ if ($bgcol == 1) {
       }
     }
     ?>
+<script>
+$(document).ready(function(){
+    $(".temporary").change(function(){
+        let postId = $(this).data("id");
+        let userId = $(this).data("user");
+        let $countSpan = $(this).siblings("span").last();
+
+        $.post("likes.php", { id: postId }, function(response){
+            $countSpan.text(response); 
+        });
+    });
+});
+
+</script>
 
     <div class="button_action">
       <label class="icon-toggle">

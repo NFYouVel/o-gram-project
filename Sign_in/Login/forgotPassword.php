@@ -88,6 +88,7 @@
         Email
         <input type="email" name="email" required placeholder="Input Your Email...">
         <input type="submit" name="upload">
+        <div id="response" style="color:pink; text-align:center; margin-top:10px;"></div>
         <a href="login.php">Back To Login</a>
     </form>
 </body>
