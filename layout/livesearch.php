@@ -4,13 +4,13 @@ if (isset($_POST['input'])) {
   $input = $_POST['input'];
   $query = "SELECT * FROM user WHERE username LIKE '%$input%'";
   $sql = mysqli_query($connection, $query);
-
+  $id = $_POST["id"];
   while ($row = mysqli_fetch_array($sql)) {
     $name = $row["username"];
     $nickname = $row["nickname"];
-    $id = $row["id"];
+    $tempid = $row["id"];
     if (isset($row['profilepic'])) {
-      echo "<a href='../layout/searchprofile.php?id='$id'>
+      echo "<a href='../layout/searchprofile.php?tempid=$tempid'>
       <div class='user-suggestion'>
         <img src='pfp/" . $row['profilepic'] . "' alt='Profile 1' class='profile-img'>
         <div class='user-info'>
@@ -22,7 +22,8 @@ if (isset($_POST['input'])) {
       </div>";
     }
     else{
-      echo "<div class='user-suggestion'>
+      echo "<a href='../layout/searchprofile.php?tempid=$tempid'>
+      <div class='user-suggestion'>
         <img src='pfp/avatar def.jpg' alt='Profile 1' class='profile-img'>
         <div class='user-info'>
           <p class='display-name'>" . htmlspecialchars($name) . "</p>
@@ -30,7 +31,8 @@ if (isset($_POST['input'])) {
         </div>
         <input type='checkbox' id='follow1' class='follow-toggle hidden'>
         <label for='follow1' class='follow-btn' data-text='Follow' data-text-checked='Unfollow'></label>
-      </div>";
+      </div>
+      </a>";
     }
   }
 }

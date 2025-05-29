@@ -296,7 +296,7 @@ if ($bgcol == 1) {
 
   <div class="rightbar">
     <!--search&follow-->
-
+    <div id="user-data" data-user-id="<?= htmlspecialchars($id) ?>"></div>
     <form class="searchcontainer" action="#">
       <div class="search">
         <span class="material-icons"> search </span>

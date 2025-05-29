@@ -96,10 +96,6 @@ if ($bgcol == 1) {
   </div>
 
   <?php
-  if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-  ?>
-  <?php
     include("../Connection/Connection.php");
     $query = "SELECT * FROM user WHERE id = '$id'";
     $result = mysqli_query($connection, $query);
@@ -170,7 +166,6 @@ if ($bgcol == 1) {
             </div>';
       }
     }
-  }
   ?>
 </body>
 
