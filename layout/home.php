@@ -1,8 +1,52 @@
 <?php
 session_start();
+include('../Connection/Connection.php');
+
+if (isset($_GET['buttonRegis'])) {
+
+  $username = $_GET['username'];
+  $nickname = $_GET['nickname'];
+  $email = $_GET['email'];
+  $password = $_GET['password'];
+  $hashpassword = md5($_GET['password']);
+  $birth = $_GET['birth'];
+  $phone = $_GET['phone'];
+  $location = $_GET['location'];
+  $bio = $_GET['bio'];
+  $gender = $_GET['gender'];
+  $pfp = "avatar def.jpg";
+  $banner = "white.jpg";
+
+  $query = "INSERT INTO user (username, nickname, email, password, hashpassword, date_of_birth, location, phone, gender, bio, role, profilepic, bgcol, bannerpic) VALUES (
+    '$username',
+    '$nickname',
+    '$email',
+    '$password', 
+    '$hashpassword',
+    '$birth',
+    '$location',
+    '$phone',
+    '$gender',
+    '$bio',
+    'member',
+    '$pfp',
+    '#fff',
+    '$banner'
+);";
+  $result = mysqli_query($connection, $query);
+
+  $query2 = "SELECT id FROM user WHERE username = '$username' LIMIT 1";
+  $result2 = mysqli_query($connection, $query2);
+  if ($row = mysqli_fetch_array($result2)) {
+    $_SESSION['user_id'] = $row['id'];
+  }
+
+}
+
+
 $id = $_SESSION['user_id'];
 
-include('../Connection/Connection.php');
+
 
 if (isset($_POST['upload'])) {
   $caption = $_POST['caption'];
@@ -22,42 +66,6 @@ if (isset($_POST['upload'])) {
 }
 
 
-if (isset($_GET['buttonRegis'])) {
-
-  $username = $_GET['username'];
-  $nickname = $_GET['nickname'];
-  $email = $_GET['email'];
-  $password = $_GET['password'];
-  $hashpassword = md5($_GET['password']);
-  $birth = $_GET['birth'];
-  $phone = $_GET['phone'];
-  $location = $_GET['location'];
-  $bio = $_GET['bio'];
-  $gender = $_GET['gender'];
-  $pfp = "avatar def.jpg";
-  $banner = "white.jpg";
-  
-  $query = "INSERT INTO user (username, nickname, email, password, hashpassword, date_of_birth, location, phone, gender, bio, role, profilepic, bgcol, bannerpic) VALUES (
-    '$username',
-    '$nickname',
-    '$email',
-    '$password', 
-    '$hashpassword',
-    '$birth',
-    '$location',
-    '$phone',
-    '$gender',
-    '$bio',
-    'member',
-    '$pfp',
-    'white',
-    '$banner'
-);";
-  $result = mysqli_query($connection, $query);
-
-  $query = "SELECT id FROM user WHERE username = '$username' LIMIT 1";
-  $result = mysqli_query($connection, $query);
-}
 
 if (isset($_GET['input'])) {
   include('../Connection/Connection.php');
@@ -366,7 +374,7 @@ if ($bgcol == 1) {
     </div>
       <hr>
       <span>seagram 2025</span>
-    </div>
+  </div>
 </body>
 
 
