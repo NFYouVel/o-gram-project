@@ -1,7 +1,4 @@
 <?php
-  $id = $_GET['id'];
-  $temp = $id;
-  include("../Connection/Connection.php");
 session_start();
 $id = $_SESSION['user_id'];
 $temp = $_SESSION['user_id'];
