@@ -29,6 +29,8 @@ if ($bgcol == 1) {
     <link rel="stylesheet" href="../CSS/sidebar.css" />
     <link rel="stylesheet" href="../CSS/rightbar.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link rel="stylesheet" href="../CSS/midPost.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
   :root {
     --background: <?php echo $backgroundColor; ?>;
@@ -62,7 +64,7 @@ if ($bgcol == 1) {
       </div>
 
       <div class="sidebarOption">
-        <a href="../layout/profile.php?id=<?php echo $temp?>" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+        <a href="../layout/profile.php  <?php echo $temp?>" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> perm_identity </span>
         <h2>Profile</h2>
         </a>

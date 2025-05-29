@@ -5,11 +5,10 @@ $temp = "?id=" . $id;
 <!--bgcheck-->
 <?php
 include('../Connection/Connection.php');
-$id = $_GET['id'];
 
 $query = mysqli_query($connection, "SELECT bgcol FROM user WHERE id = '$id'");
 $row = mysqli_fetch_assoc($query);
-$bgcol = $row['bgcol'];
+$bgcol = $row["bgcol"];
 
 $backgroundColor = "#ffffff"; 
 if ($bgcol == 1) {
@@ -30,6 +29,9 @@ if ($bgcol == 1) {
   <link rel="stylesheet" href="../CSS/sidebar.css" />
   <link rel="stylesheet" href="../CSS/settings.css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../CSS/midPost.css" />
+
   <style>
   :root {
     --background: <?php echo $backgroundColor; ?>;

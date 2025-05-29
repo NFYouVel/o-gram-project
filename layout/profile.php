@@ -1,9 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
+$id = $_GET["id"];
 $temp = $_GET['id'];
 ?>
+<!--bgcheck-->
+<?php
+include('../Connection/Connection.php');
+$id = $_GET['id'];
 
+$query = mysqli_query($connection, "SELECT bgcol FROM user WHERE id = '$id'");
+$row = mysqli_fetch_assoc($query);
+$bgcol = $row['bgcol'];
+
+$backgroundColor = "#ffffff"; 
+if ($bgcol == 1) {
+  $backgroundColor = "#2b5876"; 
+} else if ($bgcol == 2) {
+  $backgroundColor = "#ffffff";
+} 
+?>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +29,11 @@ $temp = $_GET['id'];
   <link rel="stylesheet" href="../CSS/rightbar.css" />
   <link rel="stylesheet" href="../CSS/search.css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+  :root {
+    --background: <?php echo $backgroundColor; ?>;
+  }
+  </style>
 </head>
 
 <body>
