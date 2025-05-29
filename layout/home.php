@@ -255,7 +255,7 @@ if ($bgcol == 1) {
                     <span class="fa-regular fa-comment"></span>
                   </label>
                   <label class="icon-toggle">
-                    <input type="checkbox" class="bookmark" hidden data-id="' .$row["post_id"].'" data-caption="'.$row["caption"].'" data-gambar="'.$row["gambar"].'" data-likes="'.$row["likes"].'">
+                    <input type="checkbox" class="bookmark" hidden data-id="' .$row["post_id"].'">
                     <span class="fa-regular fa-bookmark"></span>
                     <span>'.$row["bookmarked"].'</span>
                   </label>

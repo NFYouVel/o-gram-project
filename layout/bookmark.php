@@ -86,66 +86,64 @@ if ($bgcol == 1) {
 
   <div class="posts">
   <?php
-    include('../Connection/Connection.php');
-      $query = "SELECT * FROM bookmark";
-      $queryp = "SELECT * FROM post";
-      $result = mysqli_query($connection, $query);
-      $resultp = mysqli_query($connection,$queryp);
-    while ($row = mysqli_fetch_array($resultp)) {
+  include('../Connection/Connection.php');
 
-      while ($rowp = mysqli_fetch_assoc($result)) { // Geting post_id
-  
-        $id = $row['user_id'];
-        $query2 = "SELECT * FROM user WHERE id = '$id'";
-        $result2 = mysqli_query($connection, $query2);
-  
-        while ($row2 = mysqli_fetch_array($result2)) { // Getting user_id
+// Get only bookmarked posts for the current user
+$query = "
+    SELECT post.*, user.username, user.nickname, user.profilepic
+    FROM bookmark
+    JOIN post ON bookmark.post_id = post.post_id
+    JOIN user ON post.user_id = user.id
+    WHERE bookmark.user_id = '$id'
+";
+$result = mysqli_query($connection, $query);
 
-          echo "<div class='posting_card'>";
-          echo "  <div class='user-header'>";
-          echo "    <div class='user-left'>";
-          echo "      <img src = 'pfp/" . $row2['profilepic'] . "' alt='Foto Profil'>";
-          echo "        <div class='user-info'>";
-          echo "          <p class='display-name'>" . $row2['nickname'] . "</p>";
-          echo "          <p class='username'>" . $row2['username'] . "</p>";
-          echo "        </div>";
-          echo "    </div>";
-  
-          echo "    <label class='follow-toggle'>";
-          echo "      <input type='checkbox' hidden />";
-          echo "      <span class='follow-btn'>Follow</span>";
-          echo "    </label>";
-          echo "   </div>";
-          echo "  <img src = '../Posting/" . $row['gambar'] . "' class='post-image'>";
-  
-          echo '<span>'. $row['caption'] .'</span><br>
-                <div class="button_action">
-                  
-                  <label class="icon-toggle">
-                    <input type="checkbox" class="temporary" name="likes" hidden data-id="'. $row["post_id"] . '">
-                    <span class="fa-regular fa-heart"></span>
-                    <span>' . $row["likes"] . '</span> 
-                  </label>
-  
+while ($row = mysqli_fetch_assoc($result)) {
+    echo "<div class='posting_card'>";
+    echo "  <div class='user-header'>";
+    echo "    <div class='user-left'>";
+    echo "      <img src='pfp/" . $row['profilepic'] . "' alt='Foto Profil'>";
+    echo "      <div class='user-info'>";
+    echo "        <p class='display-name'>" . $row['nickname'] . "</p>";
+    echo "        <p class='username'>@" . $row['username'] . "</p>";
+    echo "      </div>";
+    echo "    </div>";
+    echo "    <label class='follow-toggle'>";
+    echo "      <input type='checkbox' hidden />";
+    echo "      <span class='follow-btn'>Follow</span>";
+    echo "    </label>";
+    echo "  </div>";
+    echo "  <img src='../Posting/" . $row['gambar'] . "' class='post-image'>";
+    echo "  <span>" . $row['caption'] . "</span><br>";
+    echo "  <div class='button_action'>";
+    
+    echo "    <label class='icon-toggle'>";
+    echo "      <input type='checkbox' class='temporary' name='likes' hidden data-id='" . $row["post_id"] . "'>";
+    echo "      <span class='fa-regular fa-heart'></span>";
+    echo "      <span>" . $row["likes"] . "</span>";
+    echo "    </label>";
 
-                  <label class="icon-toggle">
-                    <input type="checkbox" hidden>
-                    <span class="fa-regular fa-comment"></span>
-                  </label>
-                  <label class="icon-toggle">
-                    <input type="checkbox" class="bookmark" hidden data-id="' .$row["post_id"].'" data-caption="'.$row["caption"].'" data-gambar="'.$row["gambar"].'" data-likes="'.$row["likes"].'">
-                    <span class="fa-regular fa-bookmark"></span>
-                    <span>'.$row["bookmarked"].'</span>
-                  </label>
-                  <label class="icon-toggle">
-                    <input type="checkbox" hidden>
-                    <span class="fa-solid fa-retweet"></span>
-                  </label>
-                </div>
-              </div>';
-        }
-      }
-    }
+    echo "    <label class='icon-toggle'>";
+    echo "      <input type='checkbox' hidden>";
+    echo "      <span class='fa-regular fa-comment'></span>";
+    echo "    </label>";
+
+    echo "    <label class='icon-toggle'>";
+    echo "      <input type='checkbox' class='bookmark' hidden data-id='" . $row["post_id"] . "'>";
+    echo "      <span class='fa-regular fa-bookmark'></span>";
+    echo "      <span>" . $row["bookmarked"] . "</span>";
+    echo "    </label>";
+
+    echo "    <label class='icon-toggle'>";
+    echo "      <input type='checkbox' hidden>";
+    echo "      <span class='fa-solid fa-retweet'></span>";
+    echo "    </label>";
+
+    echo "  </div>";
+    echo "</div>";
+}
+?>
+
   ?>
   <!--likes-->
     <script>
@@ -165,11 +163,8 @@ if ($bgcol == 1) {
     $(document).ready(function(){
       $(".bookmark").change(function(){
         let postId = $(this).data("id");
-        let caption = $(this).data("caption");
-        let image = $(this).data("gambar");
-        let likes = $(this).data("likes");
         let $countSpan = $(this).siblings("span").last();
-         $.post("bookmarking.php", {postid:postId, caption:caption, image:image, likes:likes},function(response){
+         $.post("bookmarking.php", {postid:postId},function(response){
             $countSpan.text(response); 
         });
       });
