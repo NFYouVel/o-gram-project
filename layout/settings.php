@@ -125,11 +125,12 @@ if ($bgcol == 1) {
     //   }
     // }
   </script>
-
+  <div class="posts">
   <div class="settings">
     <button class="updatedata backgroundoption" onclick="changebackground(1)">Ocean Theme</button>
     <button class="updatedata backgroundoption" onclick="changebackground(2)">Light Theme</button>
     <a href="out.php">LogOut</a>
+  </div>
   </div>
 </body>
 

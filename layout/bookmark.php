@@ -1,6 +1,4 @@
 <?php
-  $id = $_GET['id'];
-  $temp = $id;
   include("../Connection/Connection.php");
 session_start();
 $id = $_SESSION['user_id'];
@@ -84,15 +82,9 @@ if ($bgcol == 1) {
       </div>
     </div>
 
-    <!-- posting -->
-      
-        <!-- // $post_id = $_GET['post_id'];
-        // $query = "SELECT * FROM post WHERE id = '$post_id'";
-        // $result = mysqli_query($connection, $query);
+  <div class="posts">
 
-        // while ($row = mysqli_fetch_array($result)) {
-          
-        // } -->
+  </div>
 
     <div class="rightbar">
     <!--search&follow-->
