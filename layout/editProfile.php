@@ -7,10 +7,10 @@
 </head>
 <body>
     <?php
-            $id = $_SESSION['user_id'];
+        session_start();
+        $id = $_SESSION['user_id'];
     ?>
     <form method = "post" enctype="multipart/form-data" action="../layout/profile.php?id=<?php echo $id;?>">
-        <input type="hidden" name="id" value="<?php echo $id ?>">
         Display Name 
         <input type = "text" name = "displayname" required>
         Username

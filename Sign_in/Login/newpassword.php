@@ -1,11 +1,11 @@
 <?php
+session_start();
+$id = $_SESSION['user_id'];
 if (isset($_POST['upload'])) {
     include('../../Connection/Connection.php');
 
     $confirm = $_POST['confirm'];
-    $id = $_GET['id'];
-
-    $query = "SELECT * FROM user";
+    $query = "SELECT * FROM user ";
     $result = mysqli_query($connection, $query);
 
     if ($row = mysqli_fetch_array($result)) {
@@ -103,7 +103,7 @@ if (isset($_POST['upload'])) {
 
 <body>
 
-    <form method="post" action="?id=<?php echo $_GET['id']; ?>">
+    <form method="post" >
 
         Password
         <input type="text" name="password" required placeholder="Input Your Password...">

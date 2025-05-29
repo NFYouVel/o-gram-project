@@ -7,18 +7,18 @@ $temp = $_SESSION['user_id'];
 ?>
 <!--bgcheck-->
 <?php
-// include('../Connection/Connection.php');
+include('../Connection/Connection.php');
 
-// $query = mysqli_query($connection, "SELECT bgcol FROM user WHERE id = '$id'");
-// $row = mysqli_fetch_assoc($query);
-// $bgcol = $row['bgcol'];
+$query = mysqli_query($connection, "SELECT bgcol FROM user WHERE id = '$id'");
+$row = mysqli_fetch_assoc($query);
+$bgcol = $row['bgcol'];
 
-// $backgroundColor = "#ffffff";
-// if ($bgcol == 1) {
-//   $backgroundColor = "#2b5876";
-// } else if ($bgcol == 2) {
-//   $backgroundColor = "#ffffff";
-// }
+$backgroundColor = "#ffffff";
+if ($bgcol == 1) {
+  $backgroundColor = "#2b5876";
+} else if ($bgcol == 2) {
+  $backgroundColor = "#ffffff";
+}
 ?>
 
 <?php
@@ -31,16 +31,15 @@ if (isset($_POST['Save'])) {
   $BioProfile = $_POST['bio-profile'];
   $profilePicture = $_FILES['profilePic']['name'];
   $temporary = $_FILES['profilePic']['tmp_name'];
-  $id = $_POST['id'];
 
-  move_uploaded_file($temporary, "../Posting/pfp/" . $profilePicture);
+  move_uploaded_file($temporary, "../layout/pfp/" . $profilePicture);
 
-  $filepath = "pfp/" . $profilePicture;
+  $filepath = $profilePicture;
   $update = "UPDATE user SET 
-            username = $userName, 
-            nickname = $displayName, 
-            bio = $BioProfile,
-            profilepic = $filepath";
+            username = '$userName', 
+            nickname = '$displayName', 
+            bio = '$BioProfile',
+            profilepic = '$filepath' WHERE id = '$id'";
 
   if (mysqli_query($connection, $update)) {
     
@@ -53,10 +52,11 @@ if (isset($_POST['Save'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Profile</title>
-  <link rel="stylesheet" href="../CSS/Profile.css" />
+  <link rel="stylesheet" href="../CSS/profile.css" />
   <link rel="stylesheet" href="../CSS/sidebar.css" />
   <link rel="stylesheet" href="../CSS/rightbar.css" />
   <link rel="stylesheet" href="../CSS/search.css" />
+  <link rel="stylesheet" href="../CSS/midPost.css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <style>
     :root {
@@ -68,7 +68,7 @@ if (isset($_POST['Save'])) {
 
 <body>
   <div class="sidebar">
-    <a href="../layout/home.php?id=" class="svghover">
+    <a href="../layout/home.php" class="svghover">
       <svg class="icon" fill="currentColor" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 264.564 264.564" xml:space="preserve" stroke="#50b7f5">
         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -133,7 +133,7 @@ if (isset($_POST['Save'])) {
   echo "<div class='profile-page'>";
     echo "<div class='profile-background2'>";
       echo "<div class='profile-banner2'></div>";
-          echo "<a href='editProfile.php?id=$id' class = 'edit-toggle2'>Edit Profile</a>";
+          echo "<a href='editProfile.php' class = 'edit-toggle2'>Edit Profile</a>";
 
         echo "<div class='user-header2'>";
           echo "<div class='user-left2'>";

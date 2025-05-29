@@ -15,5 +15,4 @@ include('../Connection/Connection.php');
         else{
             echo "#ffffff";  
         }
-
 ?>
