@@ -11,11 +11,6 @@ $id = $_SESSION['user_id'];
     <title>Posting Form</title>
 </head>
 <body>
-    <form method = "post" enctype="multipart/form-data" action="../layout/home.php?id=<?php echo $id;?>">
-        <?php
-            session_start();
-            $id = $_SESSION['user_id'];
-        ?>
     <form method = "post" enctype="multipart/form-data" action="../layout/home.php">
         <input type="hidden" name="id" value="<?php echo $id ?>">
         Caption 
