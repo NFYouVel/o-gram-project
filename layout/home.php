@@ -35,8 +35,9 @@ if (isset($_GET['buttonRegis'])) {
   $bio = $_GET['bio'];
   $gender = $_GET['gender'];
   $pfp = "avatar def.jpg";
-
-  $query = "INSERT INTO user (username, nickname, email, password, hashpassword, date_of_birth, location, phone, gender, bio, role, profilepic, bgcol) VALUES (
+  $banner = "white.jpg";
+  
+  $query = "INSERT INTO user (username, nickname, email, password, hashpassword, date_of_birth, location, phone, gender, bio, role, profilepic, bgcol, bannerpic) VALUES (
     '$username',
     '$nickname',
     '$email',
@@ -49,7 +50,8 @@ if (isset($_GET['buttonRegis'])) {
     '$bio',
     'member',
     '$pfp',
-    'white'
+    'white',
+    '$banner'
 );";
   $result = mysqli_query($connection, $query);
 
@@ -364,7 +366,7 @@ if ($bgcol == 1) {
     </div>
       <hr>
       <span>seagram 2025</span>
-  </div>
+    </div>
 </body>
 
 
