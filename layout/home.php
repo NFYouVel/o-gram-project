@@ -2,18 +2,18 @@
 session_start();
 include('../Connection/Connection.php');
 
-if (isset($_GET['buttonRegis'])) {
+if (isset($_POST['buttonRegis'])) {
 
-  $username = $_GET['username'];
-  $nickname = $_GET['nickname'];
-  $email = $_GET['email'];
-  $password = $_GET['password'];
-  $hashpassword = md5($_GET['password']);
-  $birth = $_GET['birth'];
-  $phone = $_GET['phone'];
-  $location = $_GET['location'];
-  $bio = $_GET['bio'];
-  $gender = $_GET['gender'];
+  $username = $_POST['username'];
+  $nickname = $_POST['nickname'];
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+  $hashpassword = md5($_POST['password']);
+  $birth = $_POST['birth'];
+  $phone = $_POST['phone'];
+  $location = $_POST['location'];
+  $bio = $_POST['bio'];
+  $gender = $_POST['gender'];
   $pfp = "avatar def.jpg";
   $banner = "white.jpg";
 
@@ -30,20 +30,20 @@ if (isset($_GET['buttonRegis'])) {
     '$bio',
     'member',
     '$pfp',
-    '#fff',
+    'white',
     '$banner'
 );";
   $result = mysqli_query($connection, $query);
 
-  $query2 = "SELECT id FROM user WHERE username = '$username' LIMIT 1";
+  $query2 = "SELECT * FROM user WHERE username = '$username' LIMIT 1";
   $result2 = mysqli_query($connection, $query2);
   if ($row = mysqli_fetch_array($result2)) {
     $_SESSION['user_id'] = $row['id'];
   }
 }
-
-
 $id = $_SESSION['user_id'];
+
+
 
 
 
