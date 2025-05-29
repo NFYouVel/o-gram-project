@@ -264,20 +264,19 @@ if ($bgcol == 1) {
       }
     }
     ?>
-<script>
-$(document).ready(function(){
-    $(".temporary").change(function(){
+    <script>
+    $(document).ready(function(){
+      $(".temporary").change(function(){
         let postId = $(this).data("id");
-        let userId = $(this).data("user");
         let $countSpan = $(this).siblings("span").last();
 
         $.post("likes.php", { id: postId }, function(response){
             $countSpan.text(response); 
         });
+      });
     });
-});
 
-</script>
+    </script>
 
     <div class="button_action">
       <label class="icon-toggle">
