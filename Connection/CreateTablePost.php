@@ -6,7 +6,7 @@ $query = "CREATE TABLE post (
     user_id INT NOT NULL,
     caption VARCHAR(50) NOT NULL,
     gambar VARCHAR(100),
-    likes INT DEFAULT 0,
+    likes INT DEFAULT 0
     -- bookmark INT AUTO_INCREMENT 
 );";
 

@@ -37,7 +37,7 @@ if (isset($_GET['buttonRegis'])) {
   $gender = $_GET['gender'];
   $pfp = "avatar def.jpg";
 
-  $query = "INSERT INTO user (username, nickname, email, password, hashpassword, date_of_birth, location, phone, gender, bio, role, profilepic) VALUES (
+  $query = "INSERT INTO user (username, nickname, email, password, hashpassword, date_of_birth, location, phone, gender, bio, role, profilepic, bgcol) VALUES (
     '$username',
     '$nickname',
     '$email',
@@ -49,7 +49,8 @@ if (isset($_GET['buttonRegis'])) {
     '$gender',
     '$bio',
     'member',
-    '$pfp'
+    '$pfp',
+    'white'
 );";
   $result = mysqli_query($connection, $query);
 
@@ -78,7 +79,6 @@ if (isset($_GET['input'])) {
 <!--bgcheck-->
 <?php
 include('../Connection/Connection.php');
-$id = $_GET['id'];
 
 $query = mysqli_query($connection, "SELECT bgcol FROM user WHERE id = '$id'");
 $row = mysqli_fetch_assoc($query);
