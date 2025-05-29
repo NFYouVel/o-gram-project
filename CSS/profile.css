@@ -26,6 +26,12 @@ background-color: black;
   width: 100%;
   position: relative;
 }
+.profile-banner2 > img{
+  height: 150px;
+  width: 100%;
+  position: relative;
+  border-bottom: 1px solid gray;
+}
 
 .user-header2 {
   padding: 1rem;
@@ -40,7 +46,7 @@ background-color: black;
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  border: 4px solid black;
+  border: 2px solid white;
   background-color: black;
   object-fit: cover;
   margin-top: -60px;

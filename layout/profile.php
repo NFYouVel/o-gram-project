@@ -138,7 +138,7 @@ if (isset($_POST['Save'])) {
   while ($row = mysqli_fetch_array($result)) {
   echo "<div class='profile-page'>";
     echo "<div class='profile-background2'>";
-      echo "<div class='profile-banner2'>" . $row['bannerpic'] . "</div>";
+      echo "<div class='profile-banner2'><img src = 'banner/" . $row['bannerpic'] . "'>";
           echo "<a href='editProfile.php' class = 'edit-toggle2'>Edit Profile</a>";
 
         echo "<div class='user-header2'>";
