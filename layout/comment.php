@@ -31,6 +31,7 @@ if ($bgcol == 1) {
   <link rel="stylesheet" href="../CSS/reccomended.css" />
   <link rel="stylesheet" href="../CSS/midPost.css" />
   <link rel="stylesheet" href="../CSS/Posting.css">
+  <link rel="stylesheet" href="../CSS/comment.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -167,13 +168,41 @@ if ($bgcol == 1) {
 
             }
         }
-        echo "<p class = 'comment-section'> " . $query . "</p>";
+        echo "<div class='comment-section'>";
+        
+        $query3 = "SELECT * FROM comment WHERE post_id = $post_id";
+        $result3 = mysqli_query($connection,$query3);
+        while ($row3 = mysqli_fetch_array($result3)) {
+            echo "";
+            echo "<span class='comment' style ='color:white;'>".$row3['caption']."</span>";
+        }
 
+        ?>
+        </div>
+
+      <form method="post">
+        <input type="text" name="comment">
+        <input type="submit" name="inputt">
+      </form>
+
+      <?php
+      if (isset($_POST['inputt'])) {
+        $comment = $_POST['comment'];
+
+        $input = "INSERT INTO comment (user_id, post_id, caption) VALUE (
+        '$id',
+        '$post_id',
+        '$comment'
+        );";
+
+        $queryInput = mysqli_query($connection,$input);
+
+      }
       ?>
-      </div>
-    <div id="searchHint">
 
-    </div>
+
+      </div>
+ 
 </body>
 
 

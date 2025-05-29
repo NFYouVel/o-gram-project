@@ -1,0 +1,17 @@
+html, body {
+    height: 100%;
+}
+
+.comment-section {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(0, 132, 255);
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.comment {
+    display: block;
+    width: 100%;
+
+}
