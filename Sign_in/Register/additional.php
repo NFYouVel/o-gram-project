@@ -100,7 +100,7 @@ fclose($file);
 
             <div class="form">
                 <span class="form">Additional Data</span>
-                <form method="get" action="../../layout/home.php">
+                <form method="post" action="../../layout/home.php">
                     <input type="hidden" name="username" <?php echo "value='$name'" ?>>
                     <input type="hidden" name="email" <?php echo "value='$email'" ?>>
                     <input type="hidden" name="password" <?php echo "value='$password'" ?>>
