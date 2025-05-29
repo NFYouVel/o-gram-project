@@ -40,7 +40,6 @@ if (isset($_GET['buttonRegis'])) {
   if ($row = mysqli_fetch_array($result2)) {
     $_SESSION['user_id'] = $row['id'];
   }
-
 }
 
 
