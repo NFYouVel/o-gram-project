@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+</head>
+<body>
+    <?php
+            $id = $_GET['id'];
+    ?>
+    <form method = "post" enctype="multipart/form-data" action="../layout/profile.php?id=<?php echo $id;?>">
+        <input type="hidden" name="id" value="<?php echo $id ?>">
+        Display Name 
+        <input type = "text" name = "displayname" required>
+        Username
+        <input type = "text" name = "username" required>
+        Bio Profile
+        <input type = "text" name = "bio-profile" alt = "No bio yet.">
+        Profile picture
+        <input type = "file" name = "profilePic">
+        <a href = "../Sign_in/Login/newpassword.php">Change password</a>
+        <input type = "submit" name = "Save">
+    </form>
+</body>
+</html>

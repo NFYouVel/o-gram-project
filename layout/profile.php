@@ -4,20 +4,49 @@
 $temp = $_GET['id'];
 ?>
 
+<?php
+
+include('../Connection/Connection.php');
+
+if (isset($_POST['Save'])) {
+  $displayName = $_POST['displayname'];
+  $userName = $_POST['username'];
+  $BioProfile = $_POST['bio-profile'];
+  $profilePicture = $_FILES['profilePic']['name'];
+  $temporary = $_FILES['profilePic']['tmp_name'];
+  $id = $_POST['id'];
+
+  move_uploaded_file($temporary, "../Posting/pfp/" . $profilePicture);
+
+  $filepath = "pfp/" . $profilePicture;
+  $update = "UPDATE user SET 
+            username = $userName, 
+            nickname = $displayName, 
+            bio = $BioProfile,
+            profilepic = $filepath";
+
+  if (mysqli_query($connection, $update)) {
+    
+  } 
+}
+
+
+?>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Profile</title>
-  <link rel="stylesheet" href="../CSS/profile.css" />
+  <link rel="stylesheet" href="../CSS/Profile.css" />
   <link rel="stylesheet" href="../CSS/sidebar.css" />
   <link rel="stylesheet" href="../CSS/rightbar.css" />
   <link rel="stylesheet" href="../CSS/search.css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
   <div class="sidebar">
-    <a href="../layout/home.php<?php echo $temp ?>" class="svghover">
+    <a href="../layout/home.php?id=<?php echo $temp ?>" class="svghover">
       <svg class="icon" fill="currentColor" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 264.564 264.564" xml:space="preserve" stroke="#50b7f5">
         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -74,37 +103,34 @@ $temp = $_GET['id'];
   </div>
 
   <?php
-    if (isset($_GET['id'])) {
-      $id = $_GET['id'];
-    ?>
-    <?php
-    include("../Connection/Connection.php");
-    $query = "SELECT * FROM user WHERE id = '$id'";
-    $result = mysqli_query($connection, $query);
+  $id = $_GET['id'];
+  include("../Connection/Connection.php");
+  $query = "SELECT * FROM user WHERE id = '$id'";
+  $result = mysqli_query($connection, $query);
 
-    while ($row = mysqli_fetch_array($result)) {
-      echo "<div class='profile-bg'>";
-      echo "<div class='user-header'>";
-      echo "<div class='user-left'>";
-      echo "<img src= 'pfp/" . $row['profilepic'] . "' alt='Foto Profile'>";
-      echo "</div>";
-      echo "<div class='user-info'>";
-      echo "<p class = 'display-name'>" . $row['nickname'] . "</p>";
-      echo "<p class = 'username'>@" . $row['username'] . "</p>";
-      echo "<br>" . "<p class = 'joined-date'>" . $row['created_at'] . "</p>";
-      echo "</div>";
-      echo "</div>";
+  while ($row = mysqli_fetch_array($result)) {
+  echo "<div class='profile-page'>";
+    echo "<div class='profile-background2'>";
+      echo "<div class='profile-banner2'></div>";
+          echo "<a href='editProfile.php?id=$id' class = 'edit-toggle2'>Edit Profile</a>";
 
-      echo "<label class = 'edit-toggle'>";
-      echo "<a href = '#'>Edit Profile</a>";
-      echo "</label>";
-      echo "</div>";
-      echo "</div>";
+        echo "<div class='user-header2'>";
+          echo "<div class='user-left2'>";
+          echo "<img src='pfp/" . $row['profilepic'] . "' alt='Foto Profile'>";
+        echo "</div>";
+        echo "<div class='user-info2'>";
+          echo "<p class='display-name2'>" . $row['nickname'] . "</p>";
+          echo "<p class='username2'>@" . $row['username'] . "</p>";
+           echo "<p class = 'bio-profile'>" . $row['bio'] . "</p>"; 
+          echo "<p class='joined-date2'>Joined " . date('F Y', strtotime($row['created_at'])) . "</p>";
+        echo "</div>";
 
-
-      $id2 = $row['id'];
-      $query2 = "SELECT * FROM post WHERE user_id = '$id2'";
-      $result2 = mysqli_query($connection, $query2);
+      echo "</div>";
+    echo "</div>"; 
+  
+    $id2 = $row['id'];
+    $query2 = "SELECT * FROM post WHERE user_id = '$id2'";
+    $result2 = mysqli_query($connection, $query2);
       while ($row2 = mysqli_fetch_array($result2)) {
         echo "<div class='posting_card'>";
         echo "  <div class='user-header'>";
@@ -113,44 +139,38 @@ $temp = $_GET['id'];
         echo "        <div class='user-info'>";
         echo "          <p class='display-name'>" . $row['nickname'] . "</p>";
         echo "          <p class='username'>" . $row['username'] . "</p>";
-        echo "        </div>";
+        echo "      </div>";
         echo "    </div>";
-
-        echo "    <label class='follow-toggle'>";
-        echo "      <input type='checkbox' hidden />";
-        echo "      <span class='follow-btn'>Follow</span>";
-        echo "    </label>";
         echo "   </div>";
         echo "  <img src = '../Posting/" . $row2['gambar'] . "' class='post-image'>";
 
         echo '<span>' . $row2['caption'] . '</span><br>
-              <div class="button_action">
-              
-                <label class="icon-toggle">
-                  <input type="checkbox" name="likes" hidden>
-                  <span class="fa-regular fa-heart"></span>
-                  <span>' . $row2['likes'] . '</span>
-                </label>
-
-                <label class="icon-toggle">
-                  <input type="checkbox" hidden>
-                  <span class="fa-regular fa-comment"></span>
-                </label>
-                <label class="icon-toggle">
-                  <input type="checkbox" hidden>
-                  <span class="fa-regular fa-bookmark"></span>
-                </label>
-                <label class="icon-toggle">
-                  <input type="checkbox" hidden>
-                  <span class="fa-solid fa-retweet"></span>
-                </label>
-              </div>
-            </div>';
+                <div class="button_action">
+                
+                  <label class="icon-toggle">
+                    <input type="checkbox" name="likes" hidden>
+                    <span class="fa-regular fa-heart"></span>
+                    <span>' . $row2['likes'] . '</span>
+                  </label>
+  
+                  <label class="icon-toggle">
+                    <input type="checkbox" hidden>
+                    <span class="fa-regular fa-comment"></span>
+                  </label>
+                  <label class="icon-toggle">
+                    <input type="checkbox" hidden>
+                    <span class="fa-regular fa-bookmark"></span>
+                  </label>
+                  <label class="icon-toggle">
+                    <input type="checkbox" hidden>
+                    <span class="fa-solid fa-retweet"></span>
+                  </label>
+                </div>
+              </div>';
       }
-    }
-
+  echo "</div>";
   }
-  ?>
+?>
 </body>
 
 </html>
