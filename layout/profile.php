@@ -29,16 +29,22 @@ if (isset($_POST['Save'])) {
   $displayName = $_POST['displayname'];
   $userName = $_POST['username'];
   $BioProfile = $_POST['bio-profile'];
+  $banner = $_FILES['banner']['name'];
+  $tempBanner = $_FILES['banner']['tmp_name'];
   $profilePicture = $_FILES['profilePic']['name'];
   $temporary = $_FILES['profilePic']['tmp_name'];
 
+  move_uploaded_file($tempBanner, "../layout/banner/" . $banner);
   move_uploaded_file($temporary, "../layout/pfp/" . $profilePicture);
-
+  
   $filepath = $profilePicture;
+  $filepath2 = $banner;
+  
   $update = "UPDATE user SET 
             username = '$userName', 
             nickname = '$displayName', 
             bio = '$BioProfile',
+            bannerpic = '$filepath2',
             profilepic = '$filepath' WHERE id = '$id'";
 
   if (mysqli_query($connection, $update)) {
@@ -132,7 +138,7 @@ if (isset($_POST['Save'])) {
   while ($row = mysqli_fetch_array($result)) {
   echo "<div class='profile-page'>";
     echo "<div class='profile-background2'>";
-      echo "<div class='profile-banner2'></div>";
+      echo "<div class='profile-banner2'>" . $row['bannerpic'] . "</div>";
           echo "<a href='editProfile.php' class = 'edit-toggle2'>Edit Profile</a>";
 
         echo "<div class='user-header2'>";

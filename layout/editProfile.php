@@ -18,6 +18,8 @@
         <input type = "text" name = "username" required>
         Bio Profile
         <input type = "text" name = "bio-profile" alt = "No bio yet.">
+        Banner
+        <input type = "file" name = "banner">
         Profile picture
         <input type = "file" name = "profilePic">
         <a href = "../Sign_in/Login/newpassword.php">Change password</a>

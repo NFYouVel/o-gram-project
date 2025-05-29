@@ -65,11 +65,16 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
     box-shadow: 0 4px 15px rgba(0, 170, 255, 0.5);
+    margin-top: 10px;
   }
   
   input[type="submit"]:hover {
     background: #33ccff;
     box-shadow: 0 6px 20px rgba(51, 204, 255, 0.7);
+  }
+
+  a{
+    color: blue;
   }
   
   
