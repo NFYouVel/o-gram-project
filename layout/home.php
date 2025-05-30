@@ -102,7 +102,7 @@ if ($bgcol == 1) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SeaGram</title>
   <link rel="stylesheet" href="../CSS/sidebar.css" />
-  <link rel="stylesheet" href="../CSS/rightbar.css" />
+  <link rel="stylesheet" href="../CSS/Rightbar.css" />
   <link rel="stylesheet" href="../CSS/reccomended.css" />
   <link rel="stylesheet" href="../CSS/midPost.css" />
   <link rel="stylesheet" href="../CSS/Posting.css">

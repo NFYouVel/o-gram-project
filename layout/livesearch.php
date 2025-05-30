@@ -4,7 +4,7 @@ if (isset($_POST['input'])) {
   $input = $_POST['input'];
   $query = "SELECT * FROM user WHERE username LIKE '%$input%'";
   $sql = mysqli_query($connection, $query);
-  $id = $_POST["id"];
+  // $id = $_POST["id"];
   while ($row = mysqli_fetch_array($sql)) {
     $name = $row["username"];
     $nickname = $row["nickname"];
