@@ -1,57 +1,98 @@
-.settings{
+.settings {
     flex: 1;
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-top: 10%;
 }
-.updatedata{
+
+.button-row {
     display: flex;
-    justify-content: space-evenly;
+    align-items: center;
+    gap: 30px;
+    margin-top: 80px;
+    transition: transform 0.2s ease;
+}
+
+.button-row:hover {
+    transform: scale(1.02);
+}
+
+.orb {
+    font-size: 40px;
+    background-color: #50b7f5;
+    color: white;
+    padding: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(80, 183, 245, 0.4);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button-row:hover .orb {
+     background-color: #3ca3dd;
+    transform: rotate(10deg);
+    animation: glow 2s infinite;
+}
+
+.updatedata {
+    display: flex;
+    justify-content: center;
     align-items: center;
     width: 700px;
-    margin-top: 100px;
-    height: fit-content;
+    height: 100px;
     background-color: #50b7f5;
     border-radius: 24px;
-    font-size: 50px;
+    font-size: 40px;
     font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    border: none;
+    transition: all 0.3s ease;
 }
-.newinput{
+
+.updatedata:hover {
+    background-color: #3ca3dd;
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+    animation: glow 2s infinite;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
+  }
+  50% {
+    box-shadow: 0 0 20px white, 0 0 30px white, 0 0 40px white;
+  }
+  100% {
+    box-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
+  }
+}
+
+.newinput {
     outline: none;
     border: none;
     background: transparent;
     padding: 12px 24px;
     font-size: 50px;
     float: right;
-    
 }
-.visible{
+
+.visible {
     width: 50px;
     border: none;
     background-color: transparent;
 }
-.newinput::placeholder{
+
+.newinput::placeholder {
     text-align: center;
 }
- .backgroundoption{
+
+.backgroundoption {
     display: flex;
     flex-direction: row;
-}
-
-.button-row {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  margin-top: 100px;
-}
-
-.orb {
-  font-size: 40px;
-  background-color: #50b7f5;
-  color: white;
-  padding: 20px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
