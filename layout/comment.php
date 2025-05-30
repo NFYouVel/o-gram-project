@@ -119,8 +119,8 @@ if ($bgcol == 1) {
 
     while ($row = mysqli_fetch_assoc($result)) { // Geting post_id
     
-      $id = $row['user_id'];
-      $query2 = "SELECT * FROM user WHERE id = '$id'";
+      $user_id = $row['user_id'];
+      $query2 = "SELECT * FROM user WHERE id = '$user_id'";
       $result2 = mysqli_query($connection, $query2);
 
       while ($row2 = mysqli_fetch_array($result2)) { // Getting user_id
@@ -168,25 +168,29 @@ if ($bgcol == 1) {
                 </div>
               </div>';
 
-        echo "<div class='comment-section'>";
-
-        $query3 = "SELECT * FROM comment WHERE post_id = $post_id";
-        $result3 = mysqli_query($connection, $query3);
-        while ($row3 = mysqli_fetch_array($result3)) {
-          echo "";
-            echo "  <div class='user-header2'>";
-            echo "    <div class='user-left2'>";
-            echo "      <img src = 'pfp/" . $row2['profilepic'] . "' alt='Foto Profil'>";
-            echo "        <div class='user-info2'>";
-            echo "          <p class='display-name2'>" . $row2['nickname'] . "</p>";
-            echo "          <p class='username2'>" . $row2['username'] . "</p>";
-            echo "        </div>";
-            echo "    </div>";
-            echo "    <span class='comment'>" . $row3['caption'] . "</span>";
-            echo "   </div>";
-        }
-      }
-    }
+            }
+          }
+          // Isi comment nya
+          echo "<div class='comment-section'>";
+  
+          $query3 = "SELECT * FROM comment WHERE post_id = $post_id";
+          $result3 = mysqli_query($connection, $query3);
+          while ($row3 = mysqli_fetch_array($result3)) {
+              $query4 = "SELECT * FROM user WHERE id =".$row3['user_id'];
+              $result4 = mysqli_query($connection,$query4);
+              while ($row4 = mysqli_fetch_array($result4)) {
+                echo "  <div class='user-header2'>";
+                echo "    <div class='user-left2'>";
+                echo "      <img src = 'pfp/" . $row4['profilepic'] . "' alt='Foto Profil'>";
+                echo "        <div class='user-info2'>";
+                echo "          <p class='display-name2'>" . $row4['nickname'] . "</p>";
+                echo "          <p class='username2'>" . $row4['username'] . "</p>";
+                echo "        </div>";
+                echo "    </div>";
+                echo "    <span class='comment'>" . $row3['caption'] . "</span>";
+                echo "   </div>";
+              }
+            }
 
     ?>
   </div>
@@ -209,6 +213,9 @@ if ($bgcol == 1) {
         );";
 
     $queryInput = mysqli_query($connection, $input);
+
+
+    $plus = mysqli_query($connection, "UPDATE post SET comment = comment + 1 WHERE post_id = $post_id");
 
   }
   ?>

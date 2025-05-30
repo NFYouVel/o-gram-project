@@ -45,6 +45,8 @@
     session_start();
     include('../../Connection/Connection.php');
 
+    
+
     if (isset($_COOKIE['user_id'])) {
         header("Location: ../../layout/home.php");
         exit();
@@ -56,9 +58,6 @@
 
         $query = "SELECT * FROM user WHERE username = '$username'";
         $result = mysqli_query($connection, $query);
-
-        
-        // Cek apakah checkbox Remember Me dicentang
         
         if ($row = mysqli_fetch_array($result)) {
 
@@ -69,11 +68,26 @@
                 setcookie('user_id', $row['id'], time() + (86400 * 30), "/"); //1 hari
                 setcookie('username', $row['username'], time() + (86400 * 30), "/");
             }
-            if ($row['password'] === $password) {
+            if ($row['password'] === $password && $row['role'] === "admin") {
+                $location = "Location: ../Admin/adminInterface.php";
+                header($location);
+                exit();
+            } else if ($row['status'] === "block") {
+
+                $query = "SELECT * FROM blocked_acc WHERE user_id = '" . $row['id'] . "'";
+                $result = mysqli_query($connection, $query);
+                if ($line = mysqli_fetch_array($result)) {
+                    $reason = $line['reason'];
+                    echo "<script>document.getElementById('response').innerText = 'Your Account Has Been Blocked: $reason';</script>";
+                    
+                }
+
+            } else if ($row['password'] === $password) {
                 $location = "Location: ../../layout/home.php";
                 header($location);
                 exit();
-            } else {
+            }
+            else {
                 echo "<script>document.getElementById('response').innerText = 'Password Salah';</script>";
             }
         } else {

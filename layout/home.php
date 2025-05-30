@@ -212,11 +212,15 @@ if ($bgcol == 1) {
     <!-- Udah masuk ke posting -->
     <?php
       include('../Connection/Connection.php');
+
+
+      
+      
       $query = "SELECT * FROM post";
       $result = mysqli_query($connection, $query);
-  
+      
       while ($row = mysqli_fetch_assoc($result)) { // Geting post_id
-  
+
         $id = $row['user_id'];
         $query2 = "SELECT * FROM user WHERE id = '$id'";
         $result2 = mysqli_query($connection, $query2);
@@ -253,6 +257,7 @@ if ($bgcol == 1) {
                   <label class="icon-toggle">
                     <input type="checkbox" hidden>
                     <a href="comment.php?id='. $row['post_id'] . '"><span class="fa-regular fa-comment"></span></a>
+                    <span>'.$row['comment'].'</span>
                   </label>
                   <label class="icon-toggle">
                     <input type="checkbox" class="bookmark" hidden data-id="' .$row["post_id"].'">
