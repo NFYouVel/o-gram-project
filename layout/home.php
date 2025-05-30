@@ -367,7 +367,7 @@ if ($bgcol == 1) {
     ?>
     <hr>
     <div class="footer">
-    <span> &copy; seagram 2025</span>
+    <span class="footspan"> &copy; seagram 2025</span>
     </div>
   </div>
 </body>

@@ -189,6 +189,8 @@ while ($row = mysqli_fetch_assoc($result)) {
     $result = mysqli_query($connection, $query);
     while ($row = mysqli_fetch_array($result)) {
       $followButton = "follow" . $row['id'];
+      $tempid = $row["id"];
+      echo "<a href='../layout/searchprofile.php?tempid=$tempid'>";
       echo "<div class='user-suggestion'>";
       echo "   <img src = 'pfp/" . $row['profilepic'] . "' alt='Profile 1' class = 'profile-img'>";
       echo "    <div class='user-info'>";
@@ -200,12 +202,13 @@ while ($row = mysqli_fetch_assoc($result)) {
       echo "    <input type='checkbox' id='" . $followButton . "' class='follow-toggle hidden'>";
       echo "    <label for='" . $followButton . "' class='follow-btn' data-text='Follow' data-text-checked='Unfollow'></label>";
       echo "</div>";
+      echo"</a>";
     }
 
     ?>
     <hr>
     <div class="footer">
-    <span> &copy; seagram 2025</span>
+    <span class="footspan"> &copy; seagram 2025</span>
     </div>
     </div>
   </body>

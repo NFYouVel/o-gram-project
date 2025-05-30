@@ -134,27 +134,10 @@
         </div>
 
         <div class="rightbar">
-          <?php
-    $query = "SELECT * FROM user ORDER BY RAND() LIMIT 3";
-    $result = mysqli_query($connection, $query);
-    while ($row = mysqli_fetch_array($result)) {
-      $followButton = "follow" . $row['id'];
-      echo "<div class='user-suggestion'>";
-      echo "   <img src = 'pfp/" . $row['profilepic'] . "' alt='Profile 1' class = 'profile-img'>";
-      echo "    <div class='user-info'>";
-      echo "        <div class='user-info'>";
-      echo "          <p class='display-nameBlack'>" . $row['nickname'] . "</p>";
-      echo "          <p class='username'>" . $row['username'] . "</p>";
-      echo "        </div>";
-      echo "    </div>";
-      echo "    <input type='checkbox' id='" . $followButton . "' class='follow-toggle hidden'>";
-      echo "    <label for='" . $followButton . "' class='follow-btn' data-text='Follow' data-text-checked='Unfollow'></label>";
-      echo "</div>";
-    }
-    ?>
-          <div class="footer">
-            <hr>
-            <span>seagram 2025</span>
+          <hr class="headersearch">
+          <div class="footersearch"> 
+            
+            <span class="footspan"> &copy; seagram 2025</span>
           </div>
         </div>
 
