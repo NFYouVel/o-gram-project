@@ -1,9 +1,14 @@
 <?php
 session_start();
-$id = $_SESSION['user_id'];
+if (isset($_SESSION['user_id'])) {
+    $id = $_SESSION['user_id'];
+} else {
+    $id = $_GET['id'];
+}
+
+
 if (isset($_POST['upload'])) {
     include('../../Connection/Connection.php');
-
     $confirm = $_POST['confirm'];
     $query = "SELECT * FROM user ";
     $result = mysqli_query($connection, $query);
@@ -15,7 +20,7 @@ if (isset($_POST['upload'])) {
 
     $location = "Location: login.php";
     header($location);
-}
+} 
 ?>
 
 <!DOCTYPE html>

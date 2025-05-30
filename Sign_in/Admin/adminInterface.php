@@ -93,7 +93,7 @@
                 echo "</td>";
 
                 echo "<td><input type='checkbox' name='blockid[]' value='" . $line['id'] . "'></td>";
-                echo "<td><input type='text' name='reason[]'></td>";
+                echo "<td><input type='text' name='reason[" . $line['id'] . "]'></td>";
                 echo "</tr>";
             }
             ?>
@@ -108,25 +108,21 @@
         $reasonIds = $_POST['reason'];
 
         foreach ($blockIds as $id) {
+            $id = (int)$id;
+            $reason = mysqli_real_escape_string($connection, $_POST['reason'][$id]);
+
             $sql = "UPDATE user SET status = 'block' WHERE id = $id";
             mysqli_query($connection, $sql);
-        }
 
-        for ($i = 0; $i < count($blockIds); $i++) {
-            $indexBlock = $blockIds[$i];
-            $indexReason = $reasonIds[$i];
+            mysqli_query($connection, "DELETE FROM blocked_acc WHERE user_id = '$id'");
 
-            $indexBlock = mysqli_real_escape_string($connection, $indexBlock);
-            $sql = "DELETE FROM blocked_acc WHERE user_id = '$indexBlock'";
-            $result = mysqli_query($connection, $sql);
-
-            $sql2 = "INSERT INTO blocked_acc(user_id,reason) VALUES('$indexBlock','$indexReason')";
+            $sql2 = "INSERT INTO blocked_acc(user_id, reason) VALUES('$id', '$reason')";
             mysqli_query($connection, $sql2);
         }
 
-        echo "Berhasil block data.";
         header("Location: adminInterface.php");
         exit;
+
     } else if (isset($_POST['delete'])) {
         echo "Ga ada data yang dipilih.";
     }
