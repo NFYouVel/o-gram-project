@@ -348,6 +348,8 @@ if ($bgcol == 1) {
     $result = mysqli_query($connection, $query);
     while ($row = mysqli_fetch_array($result)) {
       $followButton = "follow" . $row['id'];
+      $tempid = $row["id"];
+      echo "<a href='../layout/searchprofile.php?tempid=$tempid'>";
       echo "<div class='user-suggestion'>";
       echo "   <img src = 'pfp/" . $row['profilepic'] . "' alt='Profile 1' class = 'profile-img'>";
       echo "    <div class='user-info'>";
@@ -359,49 +361,14 @@ if ($bgcol == 1) {
       echo "    <input type='checkbox' id='" . $followButton . "' class='follow-toggle hidden'>";
       echo "    <label for='" . $followButton . "' class='follow-btn' data-text='Follow' data-text-checked='Unfollow'></label>";
       echo "</div>";
+      echo"</a>";
     }
 
     ?>
-    <!-- <div class="reccomended">
-
-      <div class="user-suggestion">
-        <img src="../layout/pict/Screenshot (10).png" alt="Profile 1" class="profile-img">
-        <div class="user-info">
-          <p class="display-name">David</p>
-          <p class="username">@DavidChristian</p>
-        </div>
-        <input type="checkbox" id="follow1" class="follow-toggle hidden">
-        <label for="follow1" class="follow-btn" data-text="Follow" data-text-checked="Unfollow"></label>
-      </div>
-
-      <div class="user-suggestion">
-        <img src="../layout/pict/Screenshot (11).png" alt="Profile 2" class="profile-img">
-        <div class="user-info">
-          <p class="display-name">James</p>
-          <p class="username">@KohJiaQuan</p>
-        </div>
-        <input type="checkbox" id="follow2" class="follow-toggle hidden">
-        <label for="follow2" class="follow-btn" data-text="Follow" data-text-checked="Unfollow"></label>
-      </div>
-
-      <div class="user-suggestion">
-        <img src="../layout/pict/Screenshot (14).png" alt="Profile 3" class="profile-img">
-        <div class="user-info">
-          <p class="display-name">Marvel</p>
-          <p class="username">@MarvelMoshing</p>
-        </div>
-        <input type="checkbox" id="follow3" class="follow-toggle hidden">
-        <label for="follow3" class="follow-btn" data-text="Follow" data-text-checked="Unfollow"></label>
-      </div>
-
-    </div> -->
-    <!-- end recommended people -->
-
-    <div>
-
-    </div>
     <hr>
-    <span>seagram 2025</span>
+    <div class="footer">
+    <span class="footspan"> &copy; seagram 2025</span>
+    </div>
   </div>
 </body>
 
