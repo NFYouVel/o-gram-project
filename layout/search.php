@@ -29,6 +29,7 @@
         <link rel="stylesheet" href="../CSS/sidebar.css" />
         <link rel="stylesheet" href="../CSS/rightbar.css" />
         <link rel="stylesheet" href="../CSS/search.css" />
+        <link rel="stylesheet" href="../CSS/Posting.css" />
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
         <link rel="stylesheet" href="../CSS/midPost.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -110,7 +111,6 @@
             </div>
           </form>
           <div id="searchHint">
-
             <div class="recommend-people">
               <h2 id="where-follow">Who to follow</h2>
               <div class="user-suggestion">

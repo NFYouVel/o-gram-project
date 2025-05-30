@@ -62,6 +62,12 @@ if (isset($_POST['Save'])) {
     :root {
       --background: <?php echo $backgroundColor; ?>;
     }
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    }
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
