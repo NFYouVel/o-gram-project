@@ -84,7 +84,7 @@
                 echo "<td>";
                 echo $line['bgcol'];
                 echo "</td>";
-                
+
                 echo "<td><img src='../../layout/pfp/" . $line['profilepic'] . "' width='50'></td>";
                 echo "<td><img src='../../layout/banner/" . $line['bannerpic'] . "' width='50'></td>";
 
@@ -112,9 +112,14 @@
             mysqli_query($connection, $sql);
         }
 
-        for ($i=0; $i < count($blockIds); $i++) { 
+        for ($i = 0; $i < count($blockIds); $i++) {
             $indexBlock = $blockIds[$i];
             $indexReason = $reasonIds[$i];
+
+            $indexBlock = mysqli_real_escape_string($connection, $indexBlock);
+            $sql = "DELETE FROM blocked_acc WHERE user_id = '$indexBlock'";
+            $result = mysqli_query($connection, $sql);
+
             $sql2 = "INSERT INTO blocked_acc(user_id,reason) VALUES('$indexBlock','$indexReason')";
             mysqli_query($connection, $sql2);
         }
@@ -122,7 +127,6 @@
         echo "Berhasil block data.";
         header("Location: adminInterface.php");
         exit;
-
     } else if (isset($_POST['delete'])) {
         echo "Ga ada data yang dipilih.";
     }
