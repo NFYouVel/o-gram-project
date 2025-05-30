@@ -1,7 +1,7 @@
 <?php
 include "../Connection/Connection.php";
 if (isset($_POST['input'])) {
-    if ($input != "") {
+    if ($_POST['input'] !== "") {
         $input = $_POST['input'];
         $query = "SELECT post.*, user.username, user.nickname, user.profilepic
             FROM post 
