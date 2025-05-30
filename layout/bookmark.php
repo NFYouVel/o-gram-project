@@ -126,6 +126,7 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo "    <label class='icon-toggle'>";
     echo "      <input type='checkbox' hidden>";
     echo "      <span class='fa-regular fa-comment'></span>";
+    echo "      <span>" . $row["comment"] . "</span>";
     echo "    </label>";
 
     echo "    <label class='icon-toggle'>";

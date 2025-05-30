@@ -155,6 +155,7 @@ if ($bgcol == 1) {
                   <label class="icon-toggle">
                     <input type="checkbox" hidden>
                     <a href="comment.php?id=' . $row['post_id'] . '"><span class="fa-regular fa-comment"></span></a>
+                    <span>' . $row["comment"] . '</span> 
                   </label>
                   <label class="icon-toggle">
                     <input type="checkbox" class="bookmark" hidden data-id="' . $row["post_id"] . '">

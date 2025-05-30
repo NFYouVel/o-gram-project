@@ -183,10 +183,12 @@ if (isset($_POST['Save'])) {
                   <label class="icon-toggle">
                     <input type="checkbox" hidden>
                     <span class="fa-regular fa-comment"></span>
+                     <span>' . $row2['comment'] . '</span>
                   </label>
                   <label class="icon-toggle">
                     <input type="checkbox" hidden>
                     <span class="fa-regular fa-bookmark"></span>
+                     <span>' . $row2['bookmarked'] . '</span>
                   </label>
                   <label class="icon-toggle">
                     <input type="checkbox" hidden>
