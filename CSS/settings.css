@@ -8,12 +8,13 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    width: 1000px;
+    width: 700px;
     margin-top: 100px;
     height: fit-content;
     background-color: #50b7f5;
     border-radius: 24px;
     font-size: 50px;
+    font-weight: bold;
 }
 .newinput{
     outline: none;
@@ -35,4 +36,22 @@
  .backgroundoption{
     display: flex;
     flex-direction: row;
+}
+
+.button-row {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-top: 100px;
+}
+
+.orb {
+  font-size: 40px;
+  background-color: #50b7f5;
+  color: white;
+  padding: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
