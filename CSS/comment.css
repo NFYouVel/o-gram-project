@@ -1,17 +1,60 @@
-html, body {
-    height: 100%;
-}
-
 .comment-section {
-    height: 100%;
-    width: 100%;
-    background-color: rgb(0, 132, 255);
-    border-radius: 20px;
-    padding: 10px;
+  height: 100%;
+  width: 100%;
+  /* background-color: rgb(0, 132, 255); */
+  border-radius: 20px;
+  padding: 10px;
 }
 
-.comment {
-    display: block;
-    width: 100%;
+/* Untuk tiap komentar */
+.user-header2 {
+  display: flex;
+  flex-direction: column; /* supaya caption di bawah profil */
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
 
+/* Bagian atas: foto + user info */
+.user-left2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px; /* kasih jarak dengan caption */
+}
+
+/* Foto profil */
+.user-header2 img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ccc;
+}
+
+/* Informasi pengguna */
+.user-info2 {
+  display: flex;
+  flex-direction: column;
+}
+
+.display-name2 {
+  font-weight: bold;
+  margin: 0;
+  color: #111;
+}
+
+.username2 {
+  color: #777;
+  font-size: 0.9em;
+  margin: 2px 0 0;
+}
+
+/* Komentar pengguna */
+.comment {
+  color: #222;
+  font-size: 0.95em;
+  margin-left: 60px; /* supaya sejajar teks, bukan avatar */
+  white-space: pre-wrap; /* biar \n tetap terlihat */
 }

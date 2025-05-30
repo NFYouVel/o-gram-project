@@ -11,12 +11,12 @@ $query = mysqli_query($connection, "SELECT bgcol FROM user WHERE id = '$id'");
 $row = mysqli_fetch_assoc($query);
 $bgcol = $row['bgcol'];
 
-$backgroundColor = "#ffffff"; 
+$backgroundColor = "#ffffff";
 if ($bgcol == 1) {
-  $backgroundColor = "#2b5876"; 
+  $backgroundColor = "#2b5876";
 } else {
   $backgroundColor = "#ffffff";
-} 
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,10 +40,12 @@ if ($bgcol == 1) {
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="../JS/ajaxlivesearch.js"></script>
   <style>
-  :root {
-    --background: <?php echo $backgroundColor; ?>;
-  }
-</style>
+    :root {
+      --background:
+        <?php echo $backgroundColor; ?>
+      ;
+    }
+  </style>
 </head>
 
 <body>
@@ -109,42 +111,42 @@ if ($bgcol == 1) {
     </div>
   </div>
 
-    <div class="posts">
-        <?php
-        $post_id = $_GET['id'];
-        $query = "SELECT * FROM post WHERE post_id = '$post_id'";
-        $result = mysqli_query($connection, $query);
-  
-      while ($row = mysqli_fetch_assoc($result)) { // Geting post_id
-  
-        $id = $row['user_id'];
-        $query2 = "SELECT * FROM user WHERE id = '$id'";
-        $result2 = mysqli_query($connection, $query2);
-  
-        while ($row2 = mysqli_fetch_array($result2)) { // Getting user_id
+  <div class="posts">
+    <?php
+    $post_id = $_GET['id'];
+    $query = "SELECT * FROM post WHERE post_id = '$post_id'";
+    $result = mysqli_query($connection, $query);
 
-          echo "<div class='posting_card'>";
-          echo "  <div class='user-header'>";
-          echo "    <div class='user-left'>";
-          echo "      <img src = 'pfp/" . $row2['profilepic'] . "' alt='Foto Profil'>";
-          echo "        <div class='user-info'>";
-          echo "          <p class='display-name'>" . $row2['nickname'] . "</p>";
-          echo "          <p class='username'>" . $row2['username'] . "</p>";
-          echo "        </div>";
-          echo "    </div>";
-  
-          echo "    <label class='follow-toggle'>";
-          echo "      <input type='checkbox' hidden />";
-          echo "      <span class='follow-btn'>Follow</span>";
-          echo "    </label>";
-          echo "   </div>";
-          echo "  <img src = '../Posting/" . $row['gambar'] . "' class='post-image'>";
-  
-          echo '<span>'. $row['caption'] .'</span><br>
+    while ($row = mysqli_fetch_assoc($result)) { // Geting post_id
+    
+      $id = $row['user_id'];
+      $query2 = "SELECT * FROM user WHERE id = '$id'";
+      $result2 = mysqli_query($connection, $query2);
+
+      while ($row2 = mysqli_fetch_array($result2)) { // Getting user_id
+    
+        echo "<div class='posting_card'>";
+        echo "  <div class='user-header'>";
+        echo "    <div class='user-left'>";
+        echo "      <img src = 'pfp/" . $row2['profilepic'] . "' alt='Foto Profil'>";
+        echo "        <div class='user-info'>";
+        echo "          <p class='display-name'>" . $row2['nickname'] . "</p>";
+        echo "          <p class='username'>" . $row2['username'] . "</p>";
+        echo "        </div>";
+        echo "    </div>";
+
+        echo "    <label class='follow-toggle'>";
+        echo "      <input type='checkbox' hidden />";
+        echo "      <span class='follow-btn'>Follow</span>";
+        echo "    </label>";
+        echo "   </div>";
+        echo "  <img src = '../Posting/" . $row['gambar'] . "' class='post-image'>";
+
+        echo '<span>' . $row['caption'] . '</span><br>
                 <div class="button_action">
                   
                   <label class="icon-toggle">
-                    <input type="checkbox" class="temporary" name="likes" hidden data-id="'. $row["post_id"] . '">
+                    <input type="checkbox" class="temporary" name="likes" hidden data-id="' . $row["post_id"] . '">
                     <span class="fa-regular fa-heart"></span>
                     <span>' . $row["likes"] . '</span> 
                   </label>
@@ -152,12 +154,12 @@ if ($bgcol == 1) {
 
                   <label class="icon-toggle">
                     <input type="checkbox" hidden>
-                    <a href="comment.php?id='. $row['post_id'] . '"><span class="fa-regular fa-comment"></span></a>
+                    <a href="comment.php?id=' . $row['post_id'] . '"><span class="fa-regular fa-comment"></span></a>
                   </label>
                   <label class="icon-toggle">
-                    <input type="checkbox" class="bookmark" hidden data-id="' .$row["post_id"].'">
+                    <input type="checkbox" class="bookmark" hidden data-id="' . $row["post_id"] . '">
                     <span class="fa-regular fa-bookmark"></span>
-                    <span>'.$row["bookmarked"].'</span>
+                    <span>' . $row["bookmarked"] . '</span>
                   </label>
                   <label class="icon-toggle">
                     <input type="checkbox" hidden>
@@ -166,43 +168,54 @@ if ($bgcol == 1) {
                 </div>
               </div>';
 
-            }
-        }
         echo "<div class='comment-section'>";
-        
+
         $query3 = "SELECT * FROM comment WHERE post_id = $post_id";
-        $result3 = mysqli_query($connection,$query3);
+        $result3 = mysqli_query($connection, $query3);
         while ($row3 = mysqli_fetch_array($result3)) {
-            echo "";
-            echo "<span class='comment' style ='color:white;'>".$row3['caption']."</span>";
+          echo "";
+            echo "  <div class='user-header2'>";
+            echo "    <div class='user-left2'>";
+            echo "      <img src = 'pfp/" . $row2['profilepic'] . "' alt='Foto Profil'>";
+            echo "        <div class='user-info2'>";
+            echo "          <p class='display-name2'>" . $row2['nickname'] . "</p>";
+            echo "          <p class='username2'>" . $row2['username'] . "</p>";
+            echo "        </div>";
+            echo "    </div>";
+            echo "    <span class='comment'>" . $row3['caption'] . "</span>";
+            echo "   </div>";
         }
+      }
+    }
 
-        ?>
-        </div>
+    ?>
+  </div>
 
-      <form method="post">
-        <input type="text" name="comment">
-        <input type="submit" name="inputt">
-      </form>
+  <form method="post" style="margin-top: 20px;">
+    <input type="text" name="comment" placeholder="Tulis komentar..."
+      style="padding: 8px; width: 70%; border-radius: 8px; border: 1px solid #ccc;">
+    <input type="submit" name="inputt" value="Kirim"
+      style="padding: 8px 16px; border-radius: 8px; background-color: #0084ff; color: white; border: none;">
+  </form>
 
-      <?php
-      if (isset($_POST['inputt'])) {
-        $comment = $_POST['comment'];
+  <?php
+  if (isset($_POST['inputt'])) {
+    $comment = $_POST['comment'];
 
-        $input = "INSERT INTO comment (user_id, post_id, caption) VALUE (
+    $input = "INSERT INTO comment (user_id, post_id, caption) VALUE (
         '$id',
         '$post_id',
         '$comment'
         );";
 
-        $queryInput = mysqli_query($connection,$input);
+    $queryInput = mysqli_query($connection, $input);
 
-      }
-      ?>
+  }
+  ?>
 
 
-      </div>
- 
+  </div>
+
 </body>
 
 
