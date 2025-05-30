@@ -60,8 +60,7 @@ if (isset($_POST['upload'])) {
                     ('$id', '$caption', '$filepath')";
 
   if (mysqli_query($connection, $insert)) {
-    
-  } 
+  }
 }
 
 
@@ -87,12 +86,12 @@ $query = mysqli_query($connection, "SELECT bgcol FROM user WHERE id = '$id'");
 $row = mysqli_fetch_assoc($query);
 $bgcol = $row['bgcol'];
 
-$backgroundColor = "#ffffff"; 
+$backgroundColor = "#ffffff";
 if ($bgcol == 1) {
-  $backgroundColor = "#2b5876"; 
+  $backgroundColor = "#2b5876";
 } else {
   $backgroundColor = "#ffffff";
-} 
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -115,10 +114,11 @@ if ($bgcol == 1) {
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="../JS/ajaxlivesearch.js"></script>
   <style>
-  :root {
-    --background: <?php echo $backgroundColor; ?>;
-  }
-</style>
+    :root {
+      --background:
+        <?php echo $backgroundColor; ?>;
+    }
+  </style>
 </head>
 
 <body>
@@ -152,8 +152,7 @@ if ($bgcol == 1) {
         $temp = "?id=" . $id;
       }
       ?>
-      <a href="../layout/search.php"
-        style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+      <a href="../layout/search.php" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
         <span class="material-icons"> search </span>
         <h2>Explore</h2>
       </a>
@@ -211,44 +210,40 @@ if ($bgcol == 1) {
 
     <!-- Udah masuk ke posting -->
     <?php
-      include('../Connection/Connection.php');
+    include('../Connection/Connection.php');
+    $query = "SELECT * FROM post";
+    $result = mysqli_query($connection, $query);
 
+    while ($row = mysqli_fetch_assoc($result)) { // Geting post_id
 
-      
-      
-      $query = "SELECT * FROM post";
-      $result = mysqli_query($connection, $query);
-      
-      while ($row = mysqli_fetch_assoc($result)) { // Geting post_id
+      $id = $row['user_id'];
+      $query2 = "SELECT * FROM user WHERE id = '$id'";
+      $result2 = mysqli_query($connection, $query2);
 
-        $id = $row['user_id'];
-        $query2 = "SELECT * FROM user WHERE id = '$id'";
-        $result2 = mysqli_query($connection, $query2);
-  
-        while ($row2 = mysqli_fetch_array($result2)) { // Getting user_id
+      while ($row2 = mysqli_fetch_array($result2)) { // Getting user_id
 
-          echo "<div class='posting_card'>";
-          echo "  <div class='user-header'>";
-          echo "    <div class='user-left'>";
-          echo "      <img src = 'pfp/" . $row2['profilepic'] . "' alt='Foto Profil'>";
-          echo "        <div class='user-info'>";
-          echo "          <p class='display-name'>" . $row2['nickname'] . "</p>";
-          echo "          <p class='username'>" . $row2['username'] . "</p>";
-          echo "        </div>";
-          echo "    </div>";
-  
-          echo "    <label class='follow-toggle'>";
-          echo "      <input type='checkbox' hidden />";
-          echo "      <span class='follow-btn'>Follow</span>";
-          echo "    </label>";
-          echo "   </div>";
-          echo "  <img src = '../Posting/" . $row['gambar'] . "' class='post-image'>";
-  
-          echo '<span>'. $row['caption'] .'</span><br>
+        echo "<div class='posting_card'>";
+        echo "  <div class='user-header'>";
+        echo "    <div class='user-left'>";
+        echo "      <img src = 'pfp/" . $row2['profilepic'] . "' alt='Foto Profil'>";
+        echo "        <div class='user-info'>";
+        echo "          <p class='display-name'>" . $row2['nickname'] . "</p>";
+        echo "          <p class='username'>" . $row2['username'] . "</p>";
+        echo "        </div>";
+        echo "    </div>";
+
+        echo "    <label class='follow-toggle'>";
+        echo "      <input type='checkbox' hidden />";
+        echo "      <span class='follow-btn'>Follow</span>";
+        echo "    </label>";
+        echo "   </div>";
+        echo "  <img src = '../Posting/" . $row['gambar'] . "' class='post-image'>";
+
+        echo '<span>' . $row['caption'] . '</span><br>
                 <div class="button_action">
                   
                   <label class="icon-toggle">
-                    <input type="checkbox" class="temporary" name="likes" hidden data-id="'. $row["post_id"] . '">
+                    <input type="checkbox" class="temporary" name="likes" hidden data-id="' . $row["post_id"] . '">
                     <span class="fa-regular fa-heart"></span>
                     <span>' . $row["likes"] . '</span> 
                   </label>
@@ -256,13 +251,13 @@ if ($bgcol == 1) {
 
                   <label class="icon-toggle">
                     <input type="checkbox" hidden>
-                    <a href="comment.php?id='. $row['post_id'] . '"><span class="fa-regular fa-comment"></span></a>
-                    <span>'.$row['comment'].'</span>
+                    <a href="comment.php?id=' . $row['post_id'] . '"><span class="fa-regular fa-comment"></span></a>
+                    <span>' . $row['comment'] . '</span>
                   </label>
                   <label class="icon-toggle">
-                    <input type="checkbox" class="bookmark" hidden data-id="' .$row["post_id"].'">
+                    <input type="checkbox" class="bookmark" hidden data-id="' . $row["post_id"] . '">
                     <span class="fa-regular fa-bookmark"></span>
-                    <span>'.$row["bookmarked"].'</span>
+                    <span>' . $row["bookmarked"] . '</span>
                   </label>
                   <label class="icon-toggle">
                     <input type="checkbox" hidden>
@@ -270,39 +265,46 @@ if ($bgcol == 1) {
                   </label>
                 </div>
               </div>';
-        }
       }
+    }
     ?>
     <!-- comment -->
-     
+
     <!--likes-->
     <script>
-    $(document).ready(function(){
-      $(".temporary").change(function(){
-        let postId = $(this).data("id");
-        let $countSpan = $(this).siblings("span").last();
+      $(document).ready(function() {
+        $(".temporary").change(function() {
+          let postId = $(this).data("id");
+          let $countSpan = $(this).siblings("span").last();
 
-        $.post("likes.php", { id: postId }, function(response){
-            $countSpan.text(response); 
+          $.post("likes.php", {
+            id: postId
+          }, function(response) {
+            $countSpan.text(response);
+          });
         });
       });
-    });
     </script>
     <!--bookmark-->
 
     <script>
-    $(document).ready(function(){
-      $(".bookmark").change(function(){
-        let postId = $(this).data("id");
-        let caption = $(this).data("caption");
-        let image = $(this).data("gambar");
-        let likes = $(this).data("likes");
-        let $countSpan = $(this).siblings("span").last();
-         $.post("bookmarking.php", {postid:postId, caption:caption, image:image, likes:likes},function(response){
-            $countSpan.text(response); 
+      $(document).ready(function() {
+        $(".bookmark").change(function() {
+          let postId = $(this).data("id");
+          let caption = $(this).data("caption");
+          let image = $(this).data("gambar");
+          let likes = $(this).data("likes");
+          let $countSpan = $(this).siblings("span").last();
+          $.post("bookmarking.php", {
+            postid: postId,
+            caption: caption,
+            image: image,
+            likes: likes
+          }, function(response) {
+            $countSpan.text(response);
+          });
         });
       });
-    });
     </script>
     <!-- <div class="button_action">
       <label class="icon-toggle">
@@ -341,7 +343,26 @@ if ($bgcol == 1) {
     </div>
 
     <!-- recommended people -->
-    <div class="reccomended">
+    <?php
+    $query = "SELECT * FROM user ORDER BY RAND() LIMIT 3";
+    $result = mysqli_query($connection, $query);
+    while ($row = mysqli_fetch_array($result)) {
+      $followButton = "follow" . $row['id'];
+      echo "<div class='user-suggestion'>";
+      echo "   <img src = 'pfp/" . $row['profilepic'] . "' alt='Profile 1' class = 'profile-img'>";
+      echo "    <div class='user-info'>";
+      echo "        <div class='user-info'>";
+      echo "          <p class='display-name'>" . $row['nickname'] . "</p>";
+      echo "          <p class='username'>" . $row['username'] . "</p>";
+      echo "        </div>";
+      echo "    </div>";
+      echo "    <input type='checkbox' id='" . $followButton . "' class='follow-toggle hidden'>";
+      echo "    <label for='" . $followButton . "' class='follow-btn' data-text='Follow' data-text-checked='Unfollow'></label>";
+      echo "</div>";
+    }
+
+    ?>
+    <!-- <div class="reccomended">
 
       <div class="user-suggestion">
         <img src="../layout/pict/Screenshot (10).png" alt="Profile 1" class="profile-img">
@@ -373,16 +394,15 @@ if ($bgcol == 1) {
         <label for="follow3" class="follow-btn" data-text="Follow" data-text-checked="Unfollow"></label>
       </div>
 
-    </div>
+    </div> -->
     <!-- end recommended people -->
 
     <div>
 
     </div>
-      <hr>
-      <span>seagram 2025</span>
+    <hr>
+    <span>seagram 2025</span>
   </div>
 </body>
-
 
 </html>
