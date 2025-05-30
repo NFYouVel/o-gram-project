@@ -365,12 +365,10 @@ if ($bgcol == 1) {
     }
 
     ?>
-
-    <div>
-
-    </div>
     <hr>
-    <span>seagram 2025</span>
+    <div class="footer">
+    <span> &copy; seagram 2025</span>
+    </div>
   </div>
 </body>
 

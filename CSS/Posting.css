@@ -48,6 +48,11 @@
   font-weight: bold;
   margin: 0;
 }
+.display-nameBlack{
+  font-weight: bold;
+  margin: 0;
+  color:black;
+}
 
 .username {
   color: #777;

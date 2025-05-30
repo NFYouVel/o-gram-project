@@ -98,3 +98,8 @@
 .follow-toggle:checked + .follow-btn::after {
   content: attr(data-text-checked);
 }
+.footer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

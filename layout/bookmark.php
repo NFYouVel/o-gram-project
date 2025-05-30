@@ -33,6 +33,7 @@ if ($bgcol == 1) {
     <link rel="stylesheet" href="../CSS/Posting.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../JS/ajaxlivesearch.js"></script>
     <style>
   :root {
     --background: <?php echo $backgroundColor; ?>;
@@ -41,7 +42,6 @@ if ($bgcol == 1) {
   </head>
   <body>
     <div class="sidebar">
-      <a href="../layout/home.php?id=<?php echo $temp?>" class="svghover">
       <a href="../layout/home.php" class="svghover">
        <svg class="icon" fill="currentColor" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 264.564 264.564" xml:space="preserve" stroke="#50b7f5"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M132.281,264.564c51.24,0,92.931-41.681,92.931-92.918c0-50.18-87.094-164.069-90.803-168.891L132.281,0l-2.128,2.773 c-3.704,4.813-90.802,118.71-90.802,168.882C39.352,222.883,81.042,264.564,132.281,264.564z"></path> </g> </g> </g></svg>
       </a>
@@ -143,8 +143,6 @@ while ($row = mysqli_fetch_assoc($result)) {
     echo "</div>";
 }
 ?>
-
-  ?>
   <!--likes-->
     <script>
     $(document).ready(function(){
@@ -174,20 +172,41 @@ while ($row = mysqli_fetch_assoc($result)) {
 
     <div class="rightbar">
     <!--search&follow-->
-      <form class= "searchcontainer" action="#">
-            <div class="search">
-                <span class="material-icons"> search </span>
-                <input class="search-input" type="search" placeholder="search">
-            </div>
-      </form>
-
-      <div class="reccomended">
-        <span class="text">this is for reccomended</span>
+      <div id="user-data" data-user-id="<?= htmlspecialchars($id) ?>"></div>
+    <form class="searchcontainer" action="#">
+      <div class="search">
+        <span class="material-icons"> search </span>
+        <input class="search-input" id="searchin" type="search" name="search" placeholder="search">
       </div>
-        <div class="footer">
-          <hr>
-            <span>seagram 2025</span>
-        </div>
+    </form>
+
+    <div id="searchHint">
+
+    </div>
+
+      <?php
+    $query = "SELECT * FROM user ORDER BY RAND() LIMIT 3";
+    $result = mysqli_query($connection, $query);
+    while ($row = mysqli_fetch_array($result)) {
+      $followButton = "follow" . $row['id'];
+      echo "<div class='user-suggestion'>";
+      echo "   <img src = 'pfp/" . $row['profilepic'] . "' alt='Profile 1' class = 'profile-img'>";
+      echo "    <div class='user-info'>";
+      echo "        <div class='user-info'>";
+      echo "          <p class='display-name'>" . $row['nickname'] . "</p>";
+      echo "          <p class='username'>" . $row['username'] . "</p>";
+      echo "        </div>";
+      echo "    </div>";
+      echo "    <input type='checkbox' id='" . $followButton . "' class='follow-toggle hidden'>";
+      echo "    <label for='" . $followButton . "' class='follow-btn' data-text='Follow' data-text-checked='Unfollow'></label>";
+      echo "</div>";
+    }
+
+    ?>
+    <hr>
+    <div class="footer">
+    <span> &copy; seagram 2025</span>
+    </div>
     </div>
   </body>
 </html>

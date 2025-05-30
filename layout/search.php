@@ -31,6 +31,7 @@
         <link rel="stylesheet" href="../CSS/search.css" />
         <link rel="stylesheet" href="../CSS/Posting.css" />
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <link rel="stylesheet" href="../CSS/midPost.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
         <!--googlejquery-->
@@ -111,73 +112,46 @@
             </div>
           </form>
           <div id="searchHint">
-            <div class="recommend-people">
-              <h2 id="where-follow">Who to follow</h2>
-              <div class="user-suggestion">
-                <img src="../layout/pict/Screenshot (10).png" alt="Profile 1" class="profile-img">
-                <div class="user-info">
-                  <p class="display-name">David</p>
-                  <p class="username">@DavidChristian</p>
-                </div>
-                <input type="checkbox" id="follow1" class="follow-toggle hidden">
-                <label for="follow1" class="follow-btn" data-text="Follow" data-text-checked="Unfollow"></label>
-              </div>
-
-              <div class="user-suggestion">
-                <img src="../layout/pict/Screenshot (11).png" alt="Profile 2" class="profile-img">
-                <div class="user-info">
-                  <p class="display-name">James</p>
-                  <p class="username">@KohJiaQuan</p>
-                </div>
-                <input type="checkbox" id="follow2" class="follow-toggle hidden">
-                <label for="follow2" class="follow-btn" data-text="Follow" data-text-checked="Unfollow"></label>
-              </div>
-
-              <div class="user-suggestion">
-                <img src="../layout/pict/Screenshot (14).png" alt="Profile 3" class="profile-img">
-                <div class="user-info">
-                  <p class="display-name">Marvel</p>
-                  <p class="username">@MarvelMoshing</p>
-                </div>
-                <input type="checkbox" id="follow3" class="follow-toggle hidden">
-                <label for="follow3" class="follow-btn" data-text="Follow" data-text-checked="Unfollow"></label>
-              </div>
-
-              <div class="user-suggestion">
-                <img src="../layout/pict/Screenshot (14).png" alt="Profile 4" class="profile-img">
-                <div class="user-info">
-                  <p class="display-name">Leon</p>
-                  <p class="username">@LeonardPig</p>
-                </div>
-                <input type="checkbox" id="follow4" class="follow-toggle hidden">
-                <label for="follow4" class="follow-btn" data-text="Follow" data-text-checked="Unfollow"></label>
-              </div>
-
-              <div class="user-suggestion">
-                <img src="../layout/pict/Screenshot (14).png" alt="Profile 5" class="profile-img">
-                <div class="user-info">
-                  <p class="display-name">McQueen</p>
-                  <p class="username">@LightningMcQueen</p>
-                </div>
-                <input type="checkbox" id="follow5" class="follow-toggle hidden">
-                <label for="follow5" class="follow-btn" data-text="Follow" data-text-checked="Unfollow"></label>
-              </div>
-            </div>
+            <?php
+            $query = "SELECT * FROM user ORDER BY RAND() LIMIT 5";
+            $result = mysqli_query($connection, $query);
+            while ($row = mysqli_fetch_array($result)) {
+              $followButton = "follow" . $row['id'];
+              echo "<div class='user-suggestion'>";
+              echo "   <img src = 'pfp/" . $row['profilepic'] . "' alt='Profile 1' class = 'profile-img'>";
+              echo "    <div class='user-info'>";
+              echo "        <div class='user-info'>";
+              echo "          <p class='display-name'>" . $row['nickname'] . "</p>";
+              echo "          <p class='username'>" . $row['username'] . "</p>";
+              echo "        </div>";
+              echo "    </div>";
+              echo "    <input type='checkbox' id='" . $followButton . "' class='follow-toggle hidden'>";
+              echo "    <label for='" . $followButton . "' class='follow-btn' data-text='Follow' data-text-checked='Unfollow'></label>";
+              echo "</div>";
+            }
+            ?>
           </div>
         </div>
 
         <div class="rightbar">
-          <!--search&follow-->
-          <!-- <form class= "searchcontainer" action="#">
-            <div class="search">
-                <span class="material-icons"> search </span>
-                <input class="search-input" type="search" placeholder="search">
-            </div>
-      </form> -->
-
-          <div class="reccomended">
-            <span class="text">this is for reccomended</span>
-          </div>
+          <?php
+    $query = "SELECT * FROM user ORDER BY RAND() LIMIT 3";
+    $result = mysqli_query($connection, $query);
+    while ($row = mysqli_fetch_array($result)) {
+      $followButton = "follow" . $row['id'];
+      echo "<div class='user-suggestion'>";
+      echo "   <img src = 'pfp/" . $row['profilepic'] . "' alt='Profile 1' class = 'profile-img'>";
+      echo "    <div class='user-info'>";
+      echo "        <div class='user-info'>";
+      echo "          <p class='display-nameBlack'>" . $row['nickname'] . "</p>";
+      echo "          <p class='username'>" . $row['username'] . "</p>";
+      echo "        </div>";
+      echo "    </div>";
+      echo "    <input type='checkbox' id='" . $followButton . "' class='follow-toggle hidden'>";
+      echo "    <label for='" . $followButton . "' class='follow-btn' data-text='Follow' data-text-checked='Unfollow'></label>";
+      echo "</div>";
+    }
+    ?>
           <div class="footer">
             <hr>
             <span>seagram 2025</span>
